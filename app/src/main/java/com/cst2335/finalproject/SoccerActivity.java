@@ -38,7 +38,11 @@ public class SoccerActivity extends AppCompatActivity {
                 XmlPullParser xpp=factory.newPullParser();
                 xpp.setInput(response,"UTF-8");
 
-                News news=new News();
+                News news=new News("","",""
+//                        object.getString("Title"),
+//                        object.getString("Date"),
+//                        object.getInt("Image")
+                );
                 int status=0;
                 int eventType=xpp.getEventType();
                 while(eventType!=XmlPullParser.END_DOCUMENT) {
