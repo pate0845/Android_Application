@@ -9,7 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.FinalProject">
-        <activity android:name=".SoccerActivity">
+      <activity android:name=".SoccerActivity">  </activity>
+
+        <activity android:name=".CarActivity">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -17,5 +20,7 @@
             </intent-filter>
         </activity>
     </application>
+
+
 
 </manifest>
