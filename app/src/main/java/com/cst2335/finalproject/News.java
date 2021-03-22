@@ -5,12 +5,23 @@ public class News {
     String date;
     String image;
 
-    News(){
+    public News(){
 
     }
-    News (String title, String date, String image){
+   public News (String title, String date, String image){
         this.title= title;
         this.date= date;
         this.image=image;
+    }
+
+
+    public String getTitle(){
+       return title;
+    }
+    public String getDate(){
+       return date;
+    }
+    public String getImage(){
+       return image;
     }
 }
