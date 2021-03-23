@@ -32,7 +32,9 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
-
+/*
+soccerActivity class inherts from AppcompactActivity
+ */
 public class SoccerActivity extends AppCompatActivity {
 
     ArrayList<News> listItems=new ArrayList<>();
