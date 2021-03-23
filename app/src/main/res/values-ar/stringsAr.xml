@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">FinalProject</string>
-    <string name="searching">You are searching</string>
+    <string name="app_name">Final Project</string>
+    <string name="searching">You are searching: </string>
     <string name="CarData">CarData</string>
     <string name="MakeName">undo</string>
     <string name="undo">undo</string>
