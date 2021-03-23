@@ -1,5 +1,6 @@
 package com.cst2335.finalproject;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -8,6 +9,7 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintSet;
 
 public class MainActivity extends AppCompatActivity {
     @Override
@@ -19,14 +21,14 @@ public class MainActivity extends AppCompatActivity {
         ProgressBar progress=findViewById(R.id.progressBar);
         Button btn=findViewById(R.id.button);
         setProgress(50);
+
         btn.setOnClickListener(click->{
-            setProgress(100);
-            email.setText("");
-            Toast.makeText(getApplicationContext(),"You are taken to search page",Toast.LENGTH_SHORT);
-            progress.setVisibility(View.INVISIBLE);
+                setProgress(100);
+                Toast.makeText(getApplicationContext(),"You are taken to search page on Click",Toast.LENGTH_LONG);
+                email.setText("");
+                progress.setVisibility(View.INVISIBLE);
+                Intent goToProfile = new Intent(this,SongsterAPI_View.class);
+                startActivity(goToProfile);
         });
-
-
-
     }
 }
