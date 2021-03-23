@@ -1,12 +1,12 @@
 <resources>
     <string name="app_name">FinalProject</string>
-    <string name="searching">You are searching</string>
-    <string name="MakeName">undo</string>
+    <string name="searching">You are searching: </string>
+    <string name="MakeName">Make Name</string>
     <string name="CarData">CarData</string>
     <string name="undo">undo</string>
-    <string name="MakeID">undo</string>
-    <string name="ModelName">undo</string>
-    <string name="ModelID">undo</string>
+    <string name="MakeID">Make ID</string>
+    <string name="ModelName">Model Name</string>
+    <string name="ModelID">Model ID</string>
     <string name="success">success</string>
     <string name="Yes">Yes</string>
     <string name="No">No</string>
