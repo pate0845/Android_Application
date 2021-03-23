@@ -2,15 +2,32 @@ package com.cst2335.finalproject;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 import org.xmlpull.v1.XmlPullParserFactory;
 
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.lang.reflect.Array;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -18,12 +35,34 @@ import java.util.ArrayList;
 
 public class SoccerActivity extends AppCompatActivity {
 
-    ArrayList<News> listItems;
-
+    ArrayList<News> listItems=new ArrayList<>();
+    MyListAdapter adapter = new MyListAdapter();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_soccer);
+
+        AlertDialog.Builder alertDialog = new AlertDialog.Builder(SoccerActivity.this);
+        alertDialog.setTitle("Rating");
+        final EditText input = new EditText(SoccerActivity.this);
+        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT,
+                LinearLayout.LayoutParams.MATCH_PARENT);
+        input.setLayoutParams(lp);
+        alertDialog.setView(input);
+        alertDialog.setPositiveButton("YES",(dialog,which)->{
+
+
+            Toast.makeText(this,"Saved",Toast.LENGTH_SHORT).show();
+            dialog.cancel();
+        });
+        alertDialog.show();
+
+        ListView myList = (ListView)findViewById(R.id.ListView1);
+        myList.setAdapter(adapter);
+
+        SoccerQuery soccerQuery=new SoccerQuery();
+        soccerQuery.execute("https://www.goal.com/en/feeds/news?fmt=rss");
     }
     private class SoccerQuery extends AsyncTask<String, Integer, String>{
 
@@ -38,23 +77,26 @@ public class SoccerActivity extends AppCompatActivity {
                 XmlPullParser xpp=factory.newPullParser();
                 xpp.setInput(response,"UTF-8");
 
-                News news=new News("","",""
-//                        object.getString("Title"),
-//                        object.getString("Date"),
-//                        object.getInt("Image")
-                );
+                News news=null;
                 int status=0;
                 int eventType=xpp.getEventType();
                 while(eventType!=XmlPullParser.END_DOCUMENT) {
                     if (eventType == XmlPullParser.START_TAG) {
-                        if(xpp.getName().equals("title")){
-                            status=1;
-                        }else if(xpp.getName().equals("pubDate")){
-                            status=2;
-                        }else{
-                            status=0;
+                        if(xpp.getName().equals("item")){
+                            news=new News();
                         }
-
+                        else if(xpp.getName().equals("title")){
+                            if(news!=null) {
+                                status = 1;
+                            }
+                        }else if(xpp.getName().equals("pubDate")){
+                            if(news!=null) {
+                                status = 2;
+                            }
+                        }
+                        else if(xpp.getName().equals("media:thumbnail")){
+                            news.image=xpp.getAttributeValue(null,"url");
+                        }
                         //if(xpp)
                     }else if(eventType ==  XmlPullParser.TEXT){
                         if(status==1){
@@ -62,12 +104,18 @@ public class SoccerActivity extends AppCompatActivity {
                         }else if(status==2){
                             news.date=xpp.getText();
                         }
+                        status=0;
 
                     }else if(eventType ==  XmlPullParser.END_TAG){
-                        listItems.add(news);
-                        news=new News();
+                        if(xpp.getName().equals("item")){
+                            listItems.add(news);
+                        }
+
                     }
+                    eventType=xpp.next();
                 }
+
+                publishProgress(100);
 
             } catch (MalformedURLException e) {
                 e.printStackTrace();
@@ -77,6 +125,44 @@ public class SoccerActivity extends AppCompatActivity {
                 e.printStackTrace();
             }
             return null;
+        }
+
+        @Override
+        protected void onProgressUpdate(Integer... values) {
+            super.onProgressUpdate(values);
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+            adapter.notifyDataSetChanged();
+        }
+    }
+
+    private class MyListAdapter extends BaseAdapter {
+
+        public int getCount() {
+            return listItems.size();
+        }
+
+        public Object getItem(int position) {
+            return listItems.get(position);
+        }
+
+        public long getItemId(int position) {
+            return position;
+        }
+
+        public View getView(int position, View old, ViewGroup parent) {
+            LayoutInflater inflater = getLayoutInflater();
+            News news = listItems.get(position);
+            View newView = null;
+
+            newView = inflater.inflate(R.layout.new_layout, parent, false);
+            TextView tView = newView.findViewById(R.id.newTxt);
+            tView.setText(news.title);
+
+            return newView;
         }
     }
 }
