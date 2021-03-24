@@ -13,8 +13,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import org.json.JSONArray;
@@ -26,16 +26,15 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Map;
 
 public class SongsterAPI_View extends AppCompatActivity {
     EditText search;
     int artist_id, song_id;
-    String song_title;
+    String song_title,display_toast;
     Button search_txt;
     String URL_query;
     ListView list;
-    private ArrayList<SongData> songlist = new ArrayList<>();
+    private ArrayList<songData> songlist = new ArrayList<songData>();
     SongAdapter songAdapter;
     SQLiteDatabase db;
 
@@ -45,13 +44,15 @@ public class SongsterAPI_View extends AppCompatActivity {
         setContentView(R.layout.songster_api);
         search = findViewById(R.id.editText2);
         search_txt = findViewById(R.id.button2);
-        list.findViewById(R.id.list);
+        list=findViewById(R.id.list);
         search_txt.setOnClickListener(click -> {
             URL_query = "https://www.songsterr.com/a/ra/songs.json?pattern=" + search.getText().toString();
             SongData exeq = new SongData();
             exeq.execute();
-            list.setAdapter(songAdapter=new SongAdapter());
-
+            list.setAdapter(songAdapter=new SongAdapter(this,songlist));
+            songAdapter.notifyDataSetChanged();
+            display_toast=search.getText().toString();
+            search.setText("");
         });
     }
 
@@ -73,13 +74,16 @@ public class SongsterAPI_View extends AppCompatActivity {
                 }
                 String string = build.toString();
                 JSONArray bracket = new JSONArray(string);
-                for (int i = 0; i <= bracket.length(); i++) {
+                for (int i = 0; i < bracket.length(); i++) {
                     //getting data for matched searches
                     JSONObject obj = bracket.getJSONObject(i);
                     song_id = obj.getInt("id");
                     song_title = obj.getString("title");
                     JSONObject artist_data = obj.getJSONObject("artist");
                     artist_id = artist_data.getInt("id");
+                    songData songdata=new songData(song_title,artist_id,song_id);
+                    songlist.add(songdata);
+
                 }
             } catch (Exception e) {
                 e.printStackTrace();
@@ -95,6 +99,7 @@ public class SongsterAPI_View extends AppCompatActivity {
 
         public void onPostExecute(String fromDoInBackground) {
             Log.i("HTTP", fromDoInBackground);
+            Toast.makeText(getApplicationContext(),"Searching for "+display_toast,Toast.LENGTH_SHORT).show();
 
         }
 
@@ -102,9 +107,12 @@ public class SongsterAPI_View extends AppCompatActivity {
 
    public  class SongAdapter extends BaseAdapter {
         private Context context;
-        private ArrayList<songData> songData;
+        private ArrayList<songData> songlist;
 
-
+        public SongAdapter(Context context, ArrayList<songData> songlist){
+         this.context=context;
+         this.songlist=songlist;
+        }
 
         @Override
         public int getCount() {
@@ -126,9 +134,11 @@ public class SongsterAPI_View extends AppCompatActivity {
             LayoutInflater inflater=getLayoutInflater();
             View view=inflater.inflate(R.layout.list_layout,parent,false);
             songData currentsong= (com.cst2335.finalproject.songData) getItem(position);
+
              TextView txt=view.findViewById(R.id.textView);
-             txt.setText(artist_id);
-            return null;
+             txt.setText("Artist id:"+currentsong.getArtist_id()+"\nSong id:"+currentsong.getSong_id()+ "\nSong Name:"+currentsong.getSong_name());
+
+            return view;
         }
 
     }
