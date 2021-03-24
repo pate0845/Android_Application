@@ -3,9 +3,7 @@ package com.cst2335.finalproject;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -13,7 +11,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -23,18 +20,15 @@ import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 import org.xmlpull.v1.XmlPullParserFactory;
 
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.lang.reflect.Array;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 
 public class SoccerActivity extends AppCompatActivity {
-
+    String savedString;
     ArrayList<News> listItems=new ArrayList<>();
     MyListAdapter adapter = new MyListAdapter();
     @Override
@@ -42,9 +36,13 @@ public class SoccerActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_soccer);
 
+       SharedPreferences Moh = getSharedPreferences("MySharedPref", MODE_PRIVATE);
+         savedString = Moh.getString("ratting", "");
+
         AlertDialog.Builder alertDialog = new AlertDialog.Builder(SoccerActivity.this);
         alertDialog.setTitle("Rating");
         final EditText input = new EditText(SoccerActivity.this);
+        input.setText(savedString);
         LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.MATCH_PARENT,
                 LinearLayout.LayoutParams.MATCH_PARENT);
@@ -52,7 +50,7 @@ public class SoccerActivity extends AppCompatActivity {
         alertDialog.setView(input);
         alertDialog.setPositiveButton("YES",(dialog,which)->{
 
-
+            savedString = input.getText().toString();
             Toast.makeText(this,"Saved",Toast.LENGTH_SHORT).show();
             dialog.cancel();
         });
@@ -63,6 +61,15 @@ public class SoccerActivity extends AppCompatActivity {
 
         SoccerQuery soccerQuery=new SoccerQuery();
         soccerQuery.execute("https://www.goal.com/en/feeds/news?fmt=rss");
+    }
+    @Override
+    protected void onPause() {
+
+        super.onPause();
+        SharedPreferences Moh = getSharedPreferences("MySharedPref", MODE_PRIVATE);
+        SharedPreferences.Editor myEdit =Moh.edit();
+        myEdit.putString("ratting",savedString);
+        myEdit.commit();
     }
     private class SoccerQuery extends AsyncTask<String, Integer, String>{
 
