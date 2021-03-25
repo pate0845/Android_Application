@@ -5,7 +5,7 @@ package com.cst2335.finalproject;
  * Professor: Islam Gomaa, Fedor Ilitchev
  * Course ID: CST 2335
  * Lab Section: 13
- * Porpuse: Project
+ * Porpuse: Project for mobile application car database.
  */
 
 import androidx.appcompat.app.AlertDialog;
@@ -123,7 +123,7 @@ public class CarActivity extends AppCompatActivity {
         listItems =  new ArrayList<CarData>();
         myList.setAdapter(adapter);
         /**
-         * the setOnItemLongClickListener method which have four argumentp,d,pos,id
+         * the setOnItemLongClickListener method which have four argument,d,pos,id
          * the p progressbar, the int pos, and long id.
          * that I we used it to get the transactions and data from listItems
          */
@@ -131,7 +131,7 @@ public class CarActivity extends AppCompatActivity {
             CarData data=listItems.get(pos);
             /**
              * AlertDialog is used to display the box message,
-             * also it can be used to ask users to something if the users insert wrong inofrmation.
+             * also it can be used to ask users to something if the users insert wrong information.
              * the method setMessage jobs to show the listAdapter information
              * in the dialog as a content.
              */
@@ -218,12 +218,12 @@ public class CarActivity extends AppCompatActivity {
 
     /**
      * Query class that inherited from AsyncTask.
-     * it's job to amrk a method in a annotated class as a guery method,
+     * it's job to mark a method in a annotated class as a Query method,
      * so that will be run when this method is called.
      */
     private class CarQuery extends AsyncTask<String, Integer, String> {
         /**
-         * this mothed consists of the query codes which needed to be executed in the background.
+         * this method consists of the query codes which needed to be executed in the background.
          * @param strings
          * @return String
          */
@@ -232,7 +232,7 @@ public class CarActivity extends AppCompatActivity {
             try {
                 publishProgress(25);
                 /**
-                 * Url, this method is used to laod the data form array like
+                 * Url, this method is used to load the data form array like
                  */
                 URL url=new URL(strings[0]);
                 HttpURLConnection urlConnection=(HttpURLConnection) url.openConnection();
@@ -271,12 +271,12 @@ public class CarActivity extends AppCompatActivity {
                 JSONArray carArray=triviaResult.getJSONArray("Results");
                 publishProgress(50);
                 /**
-                 * For loop: this loop through JOSN arry to get all data value from there.
+                 * For loop: this loop through JSON array to get all data value from there.
                  */
                 for(int i=0;i<carArray.length();i++){
                     JSONObject object=carArray.getJSONObject(i);
                     /**
-                     * declering the data from JSON and make them as string object.
+                     * declaring the data from JSON and make them as string object.
                      */
                     CarData data=new CarData(
                             object.getInt("Make_ID"),
@@ -324,7 +324,7 @@ public class CarActivity extends AppCompatActivity {
             ProgressBar bar=findViewById(R.id.bar1);
             bar.setVisibility(View.INVISIBLE);
             /**
-             * toast is giving a feedback from the system opration so it's dis*appear by itself when the time is out.
+             * toast is giving a feedback from the system operation so it's dis*appear by itself when the time is out.
              */
             Toast.makeText(CarActivity.this,(getString(R.string.success)), Toast.LENGTH_SHORT).show();
         }
