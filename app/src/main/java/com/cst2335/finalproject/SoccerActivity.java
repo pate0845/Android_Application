@@ -167,7 +167,7 @@ public class SoccerActivity extends AppCompatActivity {
             News news = listItems.get(position);
             View newView = null;
 
-            newView = inflater.inflate(R.layout.new_layout, parent, false);
+            newView = inflater.inflate(R.layout.news_layout, parent, false);
             TextView tView = newView.findViewById(R.id.newTxt);
             tView.setText(news.title);
 
