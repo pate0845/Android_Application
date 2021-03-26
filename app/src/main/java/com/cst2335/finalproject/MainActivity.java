@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
         //initializing button
         Button btn = findViewById(R.id.button);
         //setting progress to 50%
-        setProgress(50);
+        setProgress(25);
 
         //using onclick listener to login and start other activity
         btn.setOnClickListener(click -> {
@@ -51,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onPause(){
         super.onPause();
         EditText login;
+        setProgress(50);
         login=findViewById(R.id.edittext);
         //saving the email id
         SharedPreferences.Editor editor=sharedPreferences.edit();

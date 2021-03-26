@@ -17,9 +17,11 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import org.json.JSONArray;
@@ -43,7 +45,7 @@ public class SongsterAPI_View extends AppCompatActivity {
     private ContentValues searched_songs = new ContentValues();
     SongAdapter songAdapter;
     SQLiteDatabase db;
-
+    ProgressBar progressBar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,11 +56,15 @@ public class SongsterAPI_View extends AppCompatActivity {
         search_txt = findViewById(R.id.button2);
         //initializing list
         list = findViewById(R.id.list);
+        //initializing progress bar
+        progressBar=findViewById(R.id.progressBar2);
+
         //onClicklistener
         search_txt.setOnClickListener(click -> {
             URL_query = "https://www.songsterr.com/a/ra/songs.json?pattern=" + search.getText().toString();
             SongData exeq = new SongData();
             exeq.execute();
+            setProgress(25);
             list.setAdapter(songAdapter = new SongAdapter(this, songlist));
             //     String [] columns={Song_Database.COL_ID,Song_Database.COL_SONG_ID,Song_Database.COL_ARTIST_ID,Song_Database.COL_SONG_NAME};
             //      Cursor results = db.query(false, Song_Database.TABLE_NAME, columns, null, null,
@@ -68,6 +74,16 @@ public class SongsterAPI_View extends AppCompatActivity {
             search.setText("");
         });
 
+        list.setOnItemLongClickListener(((parent, view, position, id) -> {
+            songData loadMessage = songlist.get(position);
+            AlertDialog.Builder alert = new AlertDialog.Builder(this);
+            alert.setTitle("Selected Song Inforation")
+                    .setMessage("Song:" + loadMessage.getSong_name() + "\n" +
+                            "" + "Song id:" + loadMessage.getSong_id()
+                    +"\nArtist id:"+loadMessage.getArtist_id())
+                    .create().show();
+            return true;
+        }));
 
     }
 
@@ -106,6 +122,7 @@ public class SongsterAPI_View extends AppCompatActivity {
         public String doInBackground(String... args) {
 
             try {
+                progressBar.setVisibility(View.INVISIBLE);
                 URL url = new URL(URL_query);
                 HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
                 InputStream response = urlConnection.getInputStream();
@@ -129,6 +146,7 @@ public class SongsterAPI_View extends AppCompatActivity {
                     searched_songs.put(Song_Database.COL_SONG_ID, song_id);
                     searched_songs.put(Song_Database.COL_ARTIST_ID, artist_id);
                     songlist.add(songdata);
+                    setProgress(50);
                 }
             } catch (Exception e) {
                 e.printStackTrace();
@@ -145,6 +163,7 @@ public class SongsterAPI_View extends AppCompatActivity {
         public void onPostExecute(String fromDoInBackground) {
             Log.i("HTTP", fromDoInBackground);
             Toast.makeText(getApplicationContext(), "Searching for " + display_toast, Toast.LENGTH_SHORT).show();
+            setProgress(75);
 
         }
 
@@ -197,9 +216,12 @@ public class SongsterAPI_View extends AppCompatActivity {
                 Intent songster_browser = new Intent(Intent.ACTION_VIEW);
                 songster_browser.setData(Uri.parse(d));
                 startActivity(songster_browser);
+
             });
+            setProgress(100);
 
             return view;
+
         }
 
     }
@@ -208,6 +230,7 @@ public class SongsterAPI_View extends AppCompatActivity {
 
      //saving the searched songs in database using the array
     class songData{
+
         public boolean isSent;
         public String song_name;
         public long artist_id,song_id,column_id;
