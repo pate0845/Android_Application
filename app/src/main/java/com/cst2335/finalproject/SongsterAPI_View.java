@@ -48,9 +48,13 @@ public class SongsterAPI_View extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.songster_api);
+        //search bar
         search = findViewById(R.id.editText2);
+        //search button
         search_txt = findViewById(R.id.button2);
+        //initializing list
         list = findViewById(R.id.list);
+        //onClicklistener
         search_txt.setOnClickListener(click -> {
             URL_query = "https://www.songsterr.com/a/ra/songs.json?pattern=" + search.getText().toString();
             SongData exeq = new SongData();
@@ -67,6 +71,7 @@ public class SongsterAPI_View extends AppCompatActivity {
 
     }
 
+    //loading the database
     private void loadDatabase() {
         Song_Database database = new Song_Database(this);
         db = database.getWritableDatabase();
@@ -88,11 +93,13 @@ public class SongsterAPI_View extends AppCompatActivity {
 
     }
 
+    //deleting the database
     protected void deletedatabase(songData d) {
         db.delete(Song_Database.TABLE_NAME, Song_Database.COL_ID + "=?", new String[]{Long.toString(d.getColumn_id())});
     }
 
 
+    //getting the url and searching for songs
     class SongData extends AsyncTask<String, Integer, String> {
 
         @Override
@@ -143,6 +150,7 @@ public class SongsterAPI_View extends AppCompatActivity {
 
     }
 
+    //loading list view on click for each searched item
     public class SongAdapter extends BaseAdapter {
         private Context context;
         private ArrayList<songData> songlist;
@@ -197,6 +205,8 @@ public class SongsterAPI_View extends AppCompatActivity {
     }
 
 }
+
+     //saving the searched songs in database using the array
     class songData{
         public boolean isSent;
         public String song_name;
