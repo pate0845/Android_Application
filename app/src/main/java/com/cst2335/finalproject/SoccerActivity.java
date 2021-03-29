@@ -2,7 +2,7 @@ package com.cst2335.finalproject;
 /**
  * * Author: Mohamed Hassan
  *  * Student number: 040988584
- *  * Professor: Islam Gomaa, Fedor Ilitchev
+ *  * Professor: Islam Gomaa
  *  * Course ID: CST 2335
  *  * Lab Section: 13
  *  * Porpuse: Mobile application for soccer news
@@ -24,6 +24,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.snackbar.Snackbar;
+
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 import org.xmlpull.v1.XmlPullParserFactory;
@@ -37,15 +39,15 @@ import java.util.ArrayList;
 
 /**
  *
- * soccerActivity class inherits from AppcompatActivity
+ * soccerActivity class inherited from AppcompatActivity
  *
  */
 public class SoccerActivity extends AppCompatActivity {
-    /**
-     * this array is listed all the array attribute in the listItem
-     * the adapter can give access to items and responsible to create
-     * view for each item
-     */
+
+      //this array is listed all the array attribute in the listItem
+      //the adapter can give access to items and responsible to create
+     //view for each item
+
     String savedString;
     ArrayList<News> listItems=new ArrayList<>();
     MyListAdapter adapter = new MyListAdapter();
@@ -60,6 +62,7 @@ public class SoccerActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_soccer);
+
         /**
          * sharedPreference is used to save the ratting input and read and write the text
          */
@@ -77,24 +80,57 @@ public class SoccerActivity extends AppCompatActivity {
          *rating is saved as savedString in SharedPreferences to show the next time when start the application
          */
         final EditText input = new EditText(SoccerActivity.this);
+
+
         input.setText(savedString);
         LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.MATCH_PARENT,
                 LinearLayout.LayoutParams.MATCH_PARENT);
         input.setLayoutParams(lp);
         alertDialog.setView(input);
+
         alertDialog.setPositiveButton("YES",(dialog,which)->{
 
             savedString = input.getText().toString();
             Toast.makeText(this,"Saved",Toast.LENGTH_SHORT).show();
-            dialog.cancel();
+
         });
         alertDialog.show();
 
 
         ListView myList = (ListView)findViewById(R.id.ListView1);
         myList.setAdapter(adapter);
+ /*       myList.setOnItemClickListener((parent, view, position, id)->{
+            News Msg = listItems.get(position);
+            //Create a bundle to pass data to the new fragment
+            Bundle dataToPass = new Bundle();
+            dataToPass.putString(ITEM_SELECTED, listItems.get(position).message );
+            System.out.println(listItems.get(position).toString());
+            //dataToPass.putInt(ITEM_POSITION, position);
+            dataToPass.putLong(ITEM_ID, id);
+            boolean sendSide;
+            dataToPass.putBoolean(ITEM_POSITION, msglist.get(position).leftside.equals("Send"));
 
+            if(!IsPhone)
+            {
+                DetailsFragment dFragment = new DetailsFragment(); //add a DetailFragment
+                dFragment.setArguments( dataToPass ); //pass it a bundle for information
+                getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.fragmentLocation, dFragment) //Add the fragment in FrameLayout
+                        .commit(); //actually load the fragment. Calls onCreate() in DetailFragment
+            }
+            else //isPhone
+            {
+                Intent nextActivity = new Intent(ChatRoomActivity.this, EmptyActivity.class);
+                nextActivity.putExtras(dataToPass); //send data to next activity
+                startActivity(nextActivity); //make the transition
+            }
+        });*/
+
+        Snackbar snackbar = Snackbar
+                .make(myList,"Welcome in Soccer",Snackbar.LENGTH_LONG);
+        snackbar.show();
         SoccerQuery soccerQuery=new SoccerQuery();
         soccerQuery.execute("https://www.goal.com/en/feeds/news?fmt=rss");
     }
@@ -105,6 +141,7 @@ public class SoccerActivity extends AppCompatActivity {
     @Override
     /**
      * using onPause method as there is another activity has been launched
+     *
      */
     protected void onPause() {
 
@@ -118,7 +155,7 @@ public class SoccerActivity extends AppCompatActivity {
     /**
      * SoccerQuery class inherited from AsyncTask.
      * it's job to mark a method in a annotated class as a Query method,
-     * so that will be run when this method is called
+     * so that will be run when this method is called on onCreate method
      */
     private class SoccerQuery extends AsyncTask<String, Integer, String>{
         /**
@@ -128,11 +165,12 @@ public class SoccerActivity extends AppCompatActivity {
          */
 
         @Override
+        /**
+         *  doInBackground method takes string as an input
+         *  and it override method in AsyncTask and the code is running on a background thread
+         */
         protected String doInBackground(String... strings) {
             try{
-                /**
-                 * Url method is used to load the data form array like
-                 */
                 URL url= new URL(strings[0]);
                 HttpURLConnection urlConnection=(HttpURLConnection) url.openConnection();
                 InputStream response=urlConnection.getInputStream();
