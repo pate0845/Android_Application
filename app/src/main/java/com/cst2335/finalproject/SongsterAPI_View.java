@@ -10,6 +10,9 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -21,6 +24,23 @@ import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.Toolbar;
+
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AppCompatActivity;
+
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.widget.Toast;
+
+import com.google.android.material.navigation.NavigationView;
+
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -84,6 +104,8 @@ public class SongsterAPI_View extends AppCompatActivity {
             display_toast = search.getText().toString();
             search.setText("");
         });
+
+
 
         list.setOnItemLongClickListener(((parent, view, position, id) -> {
             songData loadMessage = songlist.get(position);
@@ -262,6 +284,32 @@ public class SongsterAPI_View extends AppCompatActivity {
         }
 
     }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu items for use in the action bar
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu, menu);
+
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected( MenuItem item) {
+        if(R.id.item1==item.getItemId()){
+            AlertDialog.Builder alert=new AlertDialog.Builder(this);
+            alert.setTitle("Welcome To Songsterr")
+                    .setMessage("To search for your favourite artist or band songs"
+                    +"type the name in the search bar and it will load the songs related to band or artist."
+                    +"You can also see the information by clicking on the and also add them to favourite list by pressing favourite button"
+                    +".By hitting the star next to search button it will load all your favourite songs.You can also remove the songs from your favourite list by long clicking them.")
+                    .setNeutralButton("Dismiss",(click,b)->{
+                    }).create().show();
+        }
+        return true;
+    }
+
+
+
 
 }
 
