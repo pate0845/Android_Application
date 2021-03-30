@@ -7,10 +7,10 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class Song_Database extends SQLiteOpenHelper {
     protected final static String DATABASE_NAME="songster.db";
-    public final static int VERSION_NUM=1;
+    public final static int VERSION_NUM=4;
     public final static String TABLE_NAME="SAVE_DATA";
     public final static String COL_SONG_NAME="TITLE";
-    public final static String COL_ID="_id";
+    public final static String COL_ID="id";
     public final static String COL_ARTIST_ID="ARTIST";
     public final static String COL_SONG_ID="SONG";
 

@@ -8,7 +8,6 @@ import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.renderscript.ScriptGroup;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,6 +15,8 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -35,19 +36,28 @@ import java.net.URL;
 import java.util.ArrayList;
 
 public class SongsterAPI_View extends AppCompatActivity {
+
     EditText search;
-    int artist_id, song_id;
+    long artist_id, song_id;
     String song_title, display_toast;
     Button search_txt;
     String URL_query;
     ListView list;
+    ImageView fav_btn;
+
     private ArrayList<songData> songlist = new ArrayList<songData>();
     private ContentValues searched_songs = new ContentValues();
+    public static final String SONG_COL_ID="ID";
+    public static final String ARTIST_ID="ARTIST";
+    public static final String SONG_NAME="SONG_NAME";
+    public static final String SONG_ID="SONG_ID";
     SongAdapter songAdapter;
     SQLiteDatabase db;
     ProgressBar progressBar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.songster_api);
         //search bar
@@ -58,6 +68,10 @@ public class SongsterAPI_View extends AppCompatActivity {
         list = findViewById(R.id.list);
         //initializing progress bar
         progressBar=findViewById(R.id.progressBar2);
+        //initializing the favourite button
+        fav_btn=findViewById(R.id.fav_btn);
+        FrameLayout frameLayout=findViewById(R.id.fragmentLocation);
+        boolean result=frameLayout != null;
 
         //onClicklistener
         search_txt.setOnClickListener(click -> {
@@ -66,9 +80,6 @@ public class SongsterAPI_View extends AppCompatActivity {
             exeq.execute();
             setProgress(25);
             list.setAdapter(songAdapter = new SongAdapter(this, songlist));
-            //     String [] columns={Song_Database.COL_ID,Song_Database.COL_SONG_ID,Song_Database.COL_ARTIST_ID,Song_Database.COL_SONG_NAME};
-            //      Cursor results = db.query(false, Song_Database.TABLE_NAME, columns, null, null,
-            //              null, null, null, null);
             songAdapter.notifyDataSetChanged();
             display_toast = search.getText().toString();
             search.setText("");
@@ -77,13 +88,35 @@ public class SongsterAPI_View extends AppCompatActivity {
         list.setOnItemLongClickListener(((parent, view, position, id) -> {
             songData loadMessage = songlist.get(position);
             AlertDialog.Builder alert = new AlertDialog.Builder(this);
-            alert.setTitle("Selected Song Inforation")
-                    .setMessage("Song:" + loadMessage.getSong_name() + "\n" +
-                            "" + "Song id:" + loadMessage.getSong_id()
-                    +"\nArtist id:"+loadMessage.getArtist_id())
+            alert.setTitle("" + getString(R.string.delete))
+                    .setMessage("" + getString(R.string.row) + position + "\n" +
+                            "" + getString(R.string.data) + id)
+                    .setNeutralButton("Dismiss", (click, b) -> {
+                    })
                     .create().show();
             return true;
         }));
+
+
+        list.setOnItemClickListener((parent, view, position, id) -> {
+            Bundle data = new Bundle();
+            data.putLong(SONG_COL_ID,id);
+            data.putString(SONG_NAME, songlist.get(position).song_name);
+            data.putLong(SONG_ID, songlist.get(position).song_id);
+            data.putLong(ARTIST_ID, songlist.get(position).artist_id);
+            if(result) {
+                BlankFragment fragment = new BlankFragment();
+                fragment.setArguments(data);
+                getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.fragmentLocation, fragment, Long.toString(id))
+                        .commit();
+            }else{
+                Intent newActivity=new Intent(SongsterAPI_View.this,EmptyActivity.class);
+                newActivity.putExtras(data);
+                startActivity(newActivity);
+            }
+        });
 
     }
 
@@ -141,10 +174,11 @@ public class SongsterAPI_View extends AppCompatActivity {
                     song_title = obj.getString("title");
                     JSONObject artist_data = obj.getJSONObject("artist");
                     artist_id = artist_data.getInt("id");
-                    songData songdata = new songData(song_title, artist_id, song_id);
                     searched_songs.put(Song_Database.COL_SONG_NAME, song_title);
                     searched_songs.put(Song_Database.COL_SONG_ID, song_id);
                     searched_songs.put(Song_Database.COL_ARTIST_ID, artist_id);
+//                    long newId = db.insert(Song_Database.TABLE_NAME, null, searched_songs);
+                    songData songdata = new songData(song_title, artist_id, song_id,i+1);
                     songlist.add(songdata);
                     setProgress(50);
                 }
@@ -185,13 +219,13 @@ public class SongsterAPI_View extends AppCompatActivity {
         }
 
         @Override
-        public Object getItem(int position) {
+        public songData getItem(int position) {
             return songlist.get(position);
         }
 
         @Override
         public long getItemId(int position) {
-            return 0;
+            return getItem(position).getColumn_id();
         }
 
         @Override
@@ -200,24 +234,27 @@ public class SongsterAPI_View extends AppCompatActivity {
             View view = inflater.inflate(R.layout.list_layout, parent, false);
             songData currentsong = (songData) getItem(position);
             TextView sngnam = view.findViewById(R.id.textView);
-            TextView sngid = view.findViewById(R.id.textView5);
-            TextView artid = view.findViewById(R.id.textView6);
-            sngnam.setText("Song Name:" + currentsong.getSong_name());
-            sngid.setText("Song id:" + currentsong.getSong_id());
-            artid.setText("Artist id:" + currentsong.getArtist_id());
-            sngid.setOnClickListener(onclick -> {
-                String d = "https://www.songsterr.com/a/wa/song?id=" + currentsong.getSong_id();
-                Intent songster_browser = new Intent(Intent.ACTION_VIEW);
-                songster_browser.setData(Uri.parse(d));
-                startActivity(songster_browser);
-            });
-            artid.setOnClickListener(onclick -> {
-                String d = "https://www.songsterr.com/a/wa/artist?id=" + currentsong.getArtist_id();
-                Intent songster_browser = new Intent(Intent.ACTION_VIEW);
-                songster_browser.setData(Uri.parse(d));
-                startActivity(songster_browser);
+        //    TextView sngid = view.findViewById(R.id.textView5);
+          //  TextView artid = view.findViewById(R.id.textView6);
+            sngnam.setText("Song Name:" + currentsong.getSong_name()+
+                    "\nSong id:"+currentsong.getSong_id()+
+                    "\nArtist id:"+currentsong.getArtist_id());
+            //sngid.setText("Song id:" + currentsong.getSong_id());
+            //artid.setText("Artist id:" + currentsong.getArtist_id());
 
-            });
+//            sngid.setOnClickListener(onclick -> {
+//                String d = "https://www.songsterr.com/a/wa/song?id=" + currentsong.getSong_id();
+//                Intent songster_browser = new Intent(Intent.ACTION_VIEW);
+//                songster_browser.setData(Uri.parse(d));
+//                startActivity(songster_browser);
+//            });
+//            artid.setOnClickListener(onclick -> {
+//                String d = "https://www.songsterr.com/a/wa/artist?id=" + currentsong.getArtist_id();
+//                Intent songster_browser = new Intent(Intent.ACTION_VIEW);
+//                songster_browser.setData(Uri.parse(d));
+//                startActivity(songster_browser);
+//
+//            });
             setProgress(100);
 
             return view;
@@ -227,34 +264,5 @@ public class SongsterAPI_View extends AppCompatActivity {
     }
 
 }
-
-     //saving the searched songs in database using the array
-    class songData{
-
-        public boolean isSent;
-        public String song_name;
-        public long artist_id,song_id,column_id;
-
-        public songData(String song_name,long artist_id,long song_id){
-            this.song_name=song_name;
-            this.artist_id=artist_id;
-            this.song_id=song_id;
-        }
-
-        public songData(String song_name,long artist_id,long song_id,long column_id){
-            this.song_name=song_name;
-            this.artist_id=artist_id;
-            this.song_id=song_id;
-            this.column_id=column_id;
-        }
-        public String getSong_name(){return song_name;}
-        public long getArtist_id(){ return artist_id;}
-        public boolean isSent(){return isSent;}
-        public long getSong_id(){return song_id;}
-        public long getColumn_id(){return column_id;}
-
-    }
-
-
 
 

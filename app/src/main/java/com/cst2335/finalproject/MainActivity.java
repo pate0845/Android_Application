@@ -48,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+
     protected void onPause(){
         super.onPause();
         EditText login;
