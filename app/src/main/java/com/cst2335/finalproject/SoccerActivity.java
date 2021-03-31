@@ -11,7 +11,9 @@ package com.cst2335.finalproject;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -19,6 +21,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -49,6 +52,10 @@ public class SoccerActivity extends AppCompatActivity {
     String savedString;
     ArrayList<News> listItems=new ArrayList<>();
     MyListAdapter adapter = new MyListAdapter();
+    Boolean IsPhone;
+    String curr;
+    Bitmap currPic;
+    String CurrPicName;
 
     /**
      *the using of onCreate function and recreate the activity
@@ -60,12 +67,15 @@ public class SoccerActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_soccer);
+        FrameLayout frameLayout = findViewById(R.id.SoccerfragmentLocation);
         /**
          * sharedPreference is used to save the ratting input and read and write the text
          */
 
        SharedPreferences Moh = getSharedPreferences("MySharedPref", MODE_PRIVATE);
          savedString = Moh.getString("ratting", "");
+        if (frameLayout == null) { IsPhone = true; }
+        else{            IsPhone = false;        }
         /**
          *AlertDialog is used to display the box message to ask user for application ratting at the beginning of the application
          */
@@ -91,9 +101,38 @@ public class SoccerActivity extends AppCompatActivity {
         });
         alertDialog.show();
 
-
         ListView myList = (ListView)findViewById(R.id.ListView1);
         myList.setAdapter(adapter);
+        myList.setOnItemClickListener((parent, view, position, id)->{
+
+            News news = listItems.get(position);
+            //Create a bundle to pass data to the new fragment
+            Bundle dataToPass = new Bundle();
+            dataToPass.putString("Title", listItems.get(position).getTitle() );
+            dataToPass.putString("Date", listItems.get(position).getDate() );
+            dataToPass.putString("Image", listItems.get(position).getImage() );
+
+            boolean sendSide;
+            // if the device is not phone (tablet) load the fragment
+            if(!IsPhone)
+            {
+                SoccerDetailedFragment dFragment = new SoccerDetailedFragment();
+                dFragment.setArguments( dataToPass );
+                getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.SoccerfragmentLocation, dFragment)
+                        .commit();
+            }
+            else
+            {
+                Intent nextActivity = new Intent(SoccerActivity.this, Soccer_Empty.class);
+                nextActivity.putExtras(dataToPass);
+                startActivityForResult(nextActivity,100);
+            }
+
+        });
+
+
 
         SoccerQuery soccerQuery=new SoccerQuery();
         soccerQuery.execute("https://www.goal.com/en/feeds/news?fmt=rss");
