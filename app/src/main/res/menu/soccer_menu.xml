@@ -20,9 +20,13 @@
         android:orderInCategory="30"
         android:icon="@drawable/news"
         app:showAsAction="always"
-        android:title="Go to help"/>    <!-- This uses showAsAction=always, so look at icon= parameter -->
+        android:title="Go to help"/>     <!-- This uses showAsAction=always, so look at icon= parameter -->
 
-
+    <item android:id="@+id/item4"
+    android:orderInCategory="40"
+    android:icon="@drawable/trash"
+    app:showAsAction="always"
+    android:title="Go to help"/>
 
 
 

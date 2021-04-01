@@ -194,6 +194,9 @@ public class SoccerActivity extends AppCompatActivity {
             case R.id.item3:
                 message = "You Clicked on saved  news";
                 break;
+            case R.id.item4:
+                message = "You Clicked on deleted  news";
+                break;
         }
         Toast.makeText(this, message, Toast.LENGTH_LONG).show();
         return true;
