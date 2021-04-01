@@ -10,4 +10,18 @@
     <string name="success">success</string>
     <string name="Yes">Yes</string>
     <string name="No">No</string>
+    <string name="search">search</string>
+    <string name="car">Search For A Car</string>
+    <string name="soccer">Search for Soccer Items</string>
+    <string name="Songster">Search For Songster</string>
+    <string name="Trivia">Search For Trivia</string>
+    <string name="open">Open</string>
+    <string name="close">Close</string>
+    <string name="review">Review</string>
+    <string name="save">Save</string>
+    <string name="shopping">Shopping</string>
+    <string name="goTB">Go To ToolBar</string>
+    <string name="Ok">OK</string>
+    <string name="instruction">something</string>
+    <string name="help">Instruction</string>
 </resources>

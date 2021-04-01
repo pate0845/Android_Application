@@ -13,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -78,16 +79,38 @@ public class CarActivity extends AppCompatActivity {
         /**
          * this button is used to search for the item on the app.
          */
+        Button helpB = findViewById(R.id.help_item);
+        helpB.setOnClickListener(e->{
+            AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+            alertDialogBuilder.setTitle(getString(R.string.CarData))
+                    .setMessage(R.string.instruction)
+                    /**
+                     * this is Lambda Expressions if the click is positive then true
+                     * otherwise will use the .setNegativeButton to create then show
+                     * the result of click.
+                     */
+
+
+
+                    .setNegativeButton((getString(R.string.Ok)), (click, arg) -> { }).create().show();
+
+        });
+
+
+
         Button searchButton = findViewById(R.id.Search);
+        searchButton.setText(R.string.search);
         searchButton.setOnClickListener(e->{
             String manu=searchText.getText().toString().trim();
+
             /**
              *  creating a new query object which helps in hold the numbers of rows
              *  that each consist of the columns is specified.
              */
             CarQuery req=new CarQuery();
             req.execute("https://vpic.nhtsa.dot.gov/api/vehicles/GetModelsForMake/"+manu+"?format=json");
-            /**
+            /** 
+             * http://www.songsterr.com/a/wa/song?id=XXX
              * ProgressBar does the download and upload files, which we can called it user interface.
              */
             ProgressBar bar=findViewById(R.id.bar1);
@@ -218,7 +241,7 @@ public class CarActivity extends AppCompatActivity {
 
     /**
      * Query class that inherited from AsyncTask.
-     * it's job to mark a method in a annotated class as a Query method,
+     * it's job to mark a method in a annotated class as a Query method, which can retrieve data from an http server,
      * so that will be run when this method is called.
      */
     private class CarQuery extends AsyncTask<String, Integer, String> {
@@ -317,6 +340,7 @@ public class CarActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
+
             /**
              * notifyDataSetChanged is looking for the items that display on the screen at the same time that is call running.
              */

@@ -1,14 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Final Project</string>
-    <string name="searching">You are searching: </string>
-    <string name="CarData">CarData</string>
-    <string name="MakeName">undo</string>
-    <string name="undo">undo</string>
-    <string name="MakeID">undo</string>
-    <string name="ModelName">undo</string>
-    <string name="ModelID">undo</string>
-    <string name="success">success</string>
-    <string name="Yes">Yes</string>
-    <string name="No">No</string>
+    <string name="app_name">المشروع النهائي</string>
+    <string name="searching">انت تبحث: </string>
+    <string name="CarData">بيانات السيارة</string>
+    <string name="MakeName"> اسم المنتج</string>
+    <string name="undo">الغاء التحميل</string>
+    <string name="MakeID">معرف</string>
+    <string name="ModelName">اسم النموذج</string>
+    <string name="ModelID">معرف_النموذج</string>
+    <string name="success">نجاح</string>
+    <string name="Yes">نعم</string>
+    <string name="No">لا</string>
+    <string name="search">بحث</string>
+    <string name="car">أبحث عن سيارات</string>
+    <string name="soccer">ابحث عن عناصر كرة القدم</string>
+    <string name="Songster">أبحث عن مطربين</string>
+    <string name="Trivia">البحث عن التوافه</string>
+    <string name="open">أفتح</string>
+    <string name="close">أغلق</string>
+    <string name="review">معاينة</string>
+    <string name="save">حفظ</string>
+    <string name="shopping">تسوق</string>
+    <string name="goTB">أذهب الى شريط المهام</string>
+    <string name="Ok">زي الفل</string>
+    <string name="instruction">اشي</string>
+    <string name="help">تعلميات</string>
 </resources>

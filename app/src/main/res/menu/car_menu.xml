@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <item android:id="@+id/item1"
+        android:title="@string/review"
+        android:icon="@drawable/review"
+        android:orderInCategory="50"
+        app:showAsAction="always"/>  <!-- This uses showAsAction=always, so look at icon= parameter -->
+
+
+    <item android:id="@+id/search_item"
+        android:orderInCategory="75"
+        android:icon="@drawable/save"
+        app:showAsAction="always"
+        android:title="@string/save"/>    <!-- This uses showAsAction=always, so look at icon= parameter -->
+
+
+    <item android:id="@+id/help_item"
+        android:icon="@drawable/shopping"
+        android:title="Look at globe"
+        app:showAsAction="always"
+        android:orderInCategory="100"/> <!-- This uses showAsAction=never, so look at title= parameter -->
+
+    <item android:id="@+id/icon"
+        android:orderInCategory="125"
+        app:showAsAction="never"
+        android:title="Icon"/>
+
+</menu>
