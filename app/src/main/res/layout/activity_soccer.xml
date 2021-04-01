@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,11 +8,16 @@
     tools:context=".SoccerActivity">
 
 
+    <androidx.appcompat.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/Soccertoolbr"/>
 
     <ProgressBar
         android:id="@+id/bar1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/Soccertoolbr"
         android:visibility="invisible"
         style="?android:attr/progressBarStyleHorizontal"
         />
@@ -22,6 +27,7 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:padding="5dp"
+        android:layout_below="@+id/bar1"
         />
 
-</LinearLayout>
+</RelativeLayout>
