@@ -89,7 +89,7 @@ public class SoccerActivity extends AppCompatActivity {
          */
 
         AlertDialog.Builder alertDialog = new AlertDialog.Builder(SoccerActivity.this);
-        alertDialog.setTitle("Rating");
+        alertDialog.setTitle(R.string.rating);
         /**
          *Edit text for input user's rating.
          *rating is saved as savedString in SharedPreferences to show the next time when start the application
@@ -101,10 +101,10 @@ public class SoccerActivity extends AppCompatActivity {
                 LinearLayout.LayoutParams.MATCH_PARENT);
         input.setLayoutParams(lp);
         alertDialog.setView(input);
-        alertDialog.setPositiveButton("YES",(dialog,which)->{
+        alertDialog.setPositiveButton(R.string.yes,(dialog,which)->{
 
             savedString = input.getText().toString();
-            Toast.makeText(this,"Saved",Toast.LENGTH_SHORT).show();
+            Toast.makeText(this,R.string.saved,Toast.LENGTH_SHORT).show();
             dialog.cancel();
         });
         alertDialog.show();
@@ -178,21 +178,21 @@ public class SoccerActivity extends AppCompatActivity {
             //what to do when the menu item is selected:
             case R.id.item1:
                 finish();
-                message = "Goto Settings";
+                message ="Main menu";
                 break;
             case R.id.item2:
                 androidx.appcompat.app.AlertDialog.Builder builder = new androidx.appcompat.app.AlertDialog.Builder(this);
-                builder.setTitle("Index")
-                        .setMessage(" Click on latest soccer news to see full new, image and date ")
+                builder.setTitle(R.string.intro)
+                        .setMessage(R.string.explain)
                         .setCancelable(false)
 
-                        .setPositiveButton("OK", (click, arg) -> {
+                        .setPositiveButton(R.string.ok, (click, arg) -> {
                         })
                         .create().show();
                 message = "You clicked the help";
                 break;
             case R.id.item3:
-                message = "You clicked item 3";
+                message = "You Clicked on saved  news";
                 break;
         }
         Toast.makeText(this, message, Toast.LENGTH_LONG).show();

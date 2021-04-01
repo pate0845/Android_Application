@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Final Project</string>
+    <string name="app_name">المشروع الاخير</string>
     <string name="searching">You are searching: </string>
     <string name="CarData">CarData</string>
     <string name="MakeName">undo</string>
@@ -11,4 +11,18 @@
     <string name="success">success</string>
     <string name="Yes">Yes</string>
     <string name="No">No</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="scar">أبحث عن سيارات</string>
+    <string name="sscor">ابحث عن اخبار كرة القدم</string>
+    <string name="sTrivia">أبحث عن الفوازير</string>
+    <string name="sSong">ابحث عن مطربين</string>
+    <string name="rating">تقييم</string>
+    <string name="yes">نعم</string>
+    <string name="saved">حفظ</string>
+    <string name="setting">اذهب الى القائمة</string>
+    <string name="Dated">تاريخ</string>
+    <string name="Images">صورة</string>
+    <string name="explain">اضغط على الخبر لترى الخبر كامل</string>
+    <string name="intro">تعليمات</string>
+    <string name="ok">تم</string>
 </resources>

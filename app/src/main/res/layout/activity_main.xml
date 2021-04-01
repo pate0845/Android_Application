@@ -18,7 +18,7 @@
             android:id="@+id/butnCar"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:text="Search for cars"
+            android:text="@string/scar"
             android:layout_centerHorizontal="true"
             />
 
@@ -28,7 +28,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/butnCar"
             android:layout_centerHorizontal="true"
-            android:text="Search for Soccer Items"
+            android:text="@string/sscor"
             />
 
         <Button
@@ -37,7 +37,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/butnSoccer"
             android:layout_centerHorizontal="true"
-            android:text="Search for Songster"
+            android:text="@string/sSong"
             />
 
         <Button
@@ -46,7 +46,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/butnSongster"
             android:layout_centerHorizontal="true"
-            android:text="Search Trivia" />
+            android:text="@string/sTrivia" />
 
     </RelativeLayout>
 </RelativeLayout>
