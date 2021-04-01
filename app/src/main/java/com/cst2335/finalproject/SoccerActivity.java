@@ -182,8 +182,8 @@ public class SoccerActivity extends AppCompatActivity {
                 break;
             case R.id.item2:
                 androidx.appcompat.app.AlertDialog.Builder builder = new androidx.appcompat.app.AlertDialog.Builder(this);
-                builder.setTitle("Title")
-                        .setMessage(" ")
+                builder.setTitle("Index")
+                        .setMessage(" Click on latest soccer news to see full new, image and date ")
                         .setCancelable(false)
 
                         .setPositiveButton("OK", (click, arg) -> {
