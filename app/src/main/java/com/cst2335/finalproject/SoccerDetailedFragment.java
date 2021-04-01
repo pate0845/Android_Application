@@ -17,6 +17,8 @@ import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.TextView;
 
+import com.google.android.material.snackbar.Snackbar;
+
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
@@ -81,10 +83,19 @@ public class SoccerDetailedFragment extends Fragment {
         Bundle dataFromActivity;
         dataFromActivity = getArguments();
         View result =  inflater.inflate(R.layout.fragment_soccer_detailed, container, false);    // Inflate the layout for this fragment
+        Button saveButton = result.findViewById(R.id.saving);
+        saveButton.setOnClickListener( c -> {
+            Snackbar snackbar = Snackbar
+                    .make(saveButton,getString(R.string.ssave),Snackbar.LENGTH_LONG);
+            snackbar.show();
+        });
 
 
 
-        TextView titletxt = result.findViewById(R.id.Newslbl);                                  //Receive the news
+
+
+
+    TextView titletxt = result.findViewById(R.id.Newslbl);                                  //Receive the news
         TextView datetxt = result.findViewById(R.id.NewsDate);
 
 

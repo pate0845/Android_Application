@@ -25,5 +25,9 @@
     <string name="explain">Click on latest soccer news to see full new, image and date</string>
     <string name="intro">Instruction</string>
     <string name="ok">OK</string>
+    <string name="ssave">save this new</string>
+    <string name="shelp">You clicked the help</string>
+    <string name="sssave">You Clicked on saved  news</string>
+    <string name="selete">You Clicked on deleted  news</string>
 
 </resources>

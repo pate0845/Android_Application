@@ -31,6 +31,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.snackbar.Snackbar;
+
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 import org.xmlpull.v1.XmlPullParserFactory;
@@ -111,6 +113,8 @@ public class SoccerActivity extends AppCompatActivity {
 
         ListView myList = (ListView)findViewById(R.id.ListView1);
         myList.setAdapter(adapter);
+
+
         myList.setOnItemClickListener((parent, view, position, id)->{
 
             News news = listItems.get(position);
@@ -139,6 +143,7 @@ public class SoccerActivity extends AppCompatActivity {
             }
 
         });
+
 
 
 
@@ -189,13 +194,13 @@ public class SoccerActivity extends AppCompatActivity {
                         .setPositiveButton(R.string.ok, (click, arg) -> {
                         })
                         .create().show();
-                message = "You clicked the help";
+                message = getString(R.string.shelp);
                 break;
             case R.id.item3:
-                message = "You Clicked on saved  news";
+                message = getString(R.string.sssave);
                 break;
             case R.id.item4:
-                message = "You Clicked on deleted  news";
+                message = getString(R.string.selete);
                 break;
         }
         Toast.makeText(this, message, Toast.LENGTH_LONG).show();

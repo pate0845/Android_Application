@@ -25,4 +25,8 @@
     <string name="explain">اضغط على الخبر لترى الخبر كامل</string>
     <string name="intro">تعليمات</string>
     <string name="ok">تم</string>
+    <string name="ssave">أحفظ هذا الخبر</string>
+    <string name="shelp">لقد ضغط على مساعدة</string>
+    <string name="sssave">أضغط لحفظ الخبر</string>
+    <string name="selete">أضغط لحذف الخبرs</string>
 </resources>
