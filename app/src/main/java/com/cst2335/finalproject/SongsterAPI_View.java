@@ -3,6 +3,7 @@ package com.cst2335.finalproject;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
@@ -261,6 +262,7 @@ public class SongsterAPI_View extends AppCompatActivity {
             sngnam.setText("Song Name:" + currentsong.getSong_name()+
                     "\nSong id:"+currentsong.getSong_id()+
                     "\nArtist id:"+currentsong.getArtist_id());
+
             //sngid.setText("Song id:" + currentsong.getSong_id());
             //artid.setText("Artist id:" + currentsong.getArtist_id());
 
@@ -277,6 +279,7 @@ public class SongsterAPI_View extends AppCompatActivity {
 //                startActivity(songster_browser);
 //
 //            });
+
             setProgress(100);
 
             return view;
@@ -297,19 +300,12 @@ public class SongsterAPI_View extends AppCompatActivity {
     public boolean onOptionsItemSelected( MenuItem item) {
         if(R.id.item1==item.getItemId()){
             AlertDialog.Builder alert=new AlertDialog.Builder(this);
-            alert.setTitle("Welcome To Songsterr")
-                    .setMessage("To search for your favourite artist or band songs"
-                    +"type the name in the search bar and it will load the songs related to band or artist."
-                    +"You can also see the information by clicking on the and also add them to favourite list by pressing favourite button"
-                    +".By hitting the star next to search button it will load all your favourite songs.You can also remove the songs from your favourite list by long clicking them.")
-                    .setNeutralButton("Dismiss",(click,b)->{
+            alert.setTitle(R.string.help6)
+                    .setMessage(R.string.help).setNeutralButton(R.string.help5,(click,b)->{
                     }).create().show();
         }
         return true;
     }
-
-
-
 
 }
 

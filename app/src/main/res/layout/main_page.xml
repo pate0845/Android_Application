@@ -9,7 +9,7 @@
         android:id="@+id/textView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Songster-API"
+        android:text="@string/header"
         android:layout_gravity="center"
         android:textAlignment="center"
         android:textSize="60dp"
@@ -19,7 +19,7 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Welcome to Songster, it lets you search your favourite artist or bands"
+        android:text="@string/welcome"
         android:textSize="20dp"
         android:layout_gravity="center"
         android:textAlignment="center"/>
@@ -30,7 +30,7 @@
         android:layout_gravity="center"
         android:layout_marginTop="30dp"
         android:textSize="17dp"
-        android:text="Enter you email to get latest updates"
+        android:text="@string/email"
         />
 
     <EditText
@@ -39,7 +39,7 @@
         android:id="@+id/edittext"
         android:layout_marginTop="5dp"
         android:layout_gravity="center"
-        android:hint="E-mail Address"
+        android:hint="@string/emailhint"
         />
 
 
@@ -49,7 +49,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="15dp"
-        android:text="Click here"
+        android:text="@string/loginbtn"
 
         />
 

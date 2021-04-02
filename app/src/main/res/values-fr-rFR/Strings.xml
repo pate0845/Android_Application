@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--
+    This string is used for square devices and overridden by hello_world in
+    values-round/strings.xml for round devices.
+    -->
+    <!-- TODO: Remove or change this placeholder text -->
+    <!-- welcome page-->
+    <string name="email">Entrez votre e-mail pour obtenir les dernières mises à jour</string>
+    <!-- fragment-->
+    <string name="title_activity_songster_a_p_i__view">SongsterAPI_View</string>
+<string name="help">Pour rechercher les chansons de votre artiste ou groupe préféré
+    tapez le nom dans la barre de recherche et il chargera les chansons liées au groupe ou à l artiste.
+    Vous pouvez également voir les informations en cliquant sur et les ajouter à la liste des favoris en appuyant sur le bouton des favoris
+    .En frappant l étoile à côté du bouton de recherche, il chargera toutes vos chansons préférées.Vous pouvez également supprimer les chansons
+    de votre liste de favoris en cliquant longuement dessus.</string>
+    <string name="favbtn">Ajouter aux favoris</string>
+    <string name="play">Jouer la chanson</string>
+    <string name="back">Retour</string>
+<string name="help5">Rejeter</string>
+    <string name="help6">Bienvenue chez Songster</string>
+    <!--search page-->
+    <string name="searchpage">Recherche de chanteurs</string>
+    <string name="header">Songster-API</string>
+    <string name="welcome">Bienvenue dans Songster, il vous permet de rechercher votre artiste ou vos groupes préférés</string>
+    <string name="emailhint">Adresse e-mail</string>
+    <string name="loginbtn">Cliquez ici</string>
+    <string name="calender">Calendrier</string>
+    <string name="delete">Voulez-vous supprimer ceci?</string>
+    <string name="row">La ligne sélectionnée est:</string>
+    <string name="data">La ligne sélectionnée est:</string>
+    <string name="hint">Recherchez votre album préféré</string>
+    <string name="search">Chercher</string>
+    <string name="hello_world">Bonjour Square World!</string>
+</resources>

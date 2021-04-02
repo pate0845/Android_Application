@@ -17,7 +17,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="top"
         android:layout_marginTop="5dp"
-        android:text="Songster Search"
+        android:text="@string/searchpage"
         android:textSize="30dp" />
 
 
@@ -35,7 +35,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:ems="10"
-        android:hint="Search your favourite album"
+        android:hint="@string/hint"
         android:inputType="textPersonName" />
 
     <Button
@@ -45,7 +45,7 @@
         android:layout_gravity="top"
         android:layout_marginLeft="230dp"
         android:layout_marginTop="-50dp"
-        android:text="Search" />
+        android:text="@string/search" />
 
     <ListView
         android:id="@+id/list"
