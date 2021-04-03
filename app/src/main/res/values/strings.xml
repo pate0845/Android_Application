@@ -22,6 +22,11 @@
     <string name="shopping">Shopping</string>
     <string name="goTB">Go To ToolBar</string>
     <string name="Ok">OK</string>
-    <string name="instruction">something</string>
+    <string name="instruction">First, writes the name of the car brand that you are looking for.
+    Second, click on the search button to load the information about the car brand.
+        Note: You can cancel downloading the information by clicking on Unload in the taskbar
+    " You will have a list of the car make that belongs to the car brand that you decided.
+    Third, lookup for the car that you are inserted in and then click and hold.
+     Fourth, you will get and dialogue box, which contains the information about the car.</string>
     <string name="help">Instruction</string>
 </resources>

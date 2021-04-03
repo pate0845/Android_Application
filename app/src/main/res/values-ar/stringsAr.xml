@@ -13,16 +13,21 @@
     <string name="No">لا</string>
     <string name="search">بحث</string>
     <string name="car">أبحث عن سيارات</string>
-    <string name="soccer">ابحث عن عناصر كرة القدم</string>
+    <string name="soccer">ابحث عن أخبار كرة القدم</string>
     <string name="Songster">أبحث عن مطربين</string>
-    <string name="Trivia">البحث عن التوافه</string>
+    <string name="Trivia">البحث عن الفوازير</string>
     <string name="open">أفتح</string>
     <string name="close">أغلق</string>
     <string name="review">معاينة</string>
     <string name="save">حفظ</string>
     <string name="shopping">تسوق</string>
     <string name="goTB">أذهب الى شريط المهام</string>
-    <string name="Ok">زي الفل</string>
-    <string name="instruction">اشي</string>
+    <string name="Ok">تم</string>
+    <string name="instruction">اولا:أكتب اسم ماركة السيارة التي تبحث عنها.
+     ثانيا:أنقر على زر البحث لتحميل المعلومات حول ماركة السيارة.
+        ملاحظة: يمكنك الغاء تحميل المعلومات على طريق الضغط على الغاء التحميل في شريط المهام
+     "سيكون لديك قائمة بماركة السيارة التي تنتمي إلى ماركة السيارة التي قررت.
+     ثالثا: ابحث عن السيارة التي ترغب بها  فيها ثم  اضغط عليها ضغطة طويلة
+        . اخيرا:سوف يظهر مربع حوار يحتوي على معلومات حول السيارة المختارة</string>
     <string name="help">تعلميات</string>
 </resources>
