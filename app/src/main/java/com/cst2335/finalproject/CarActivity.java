@@ -94,6 +94,10 @@ public class CarActivity extends AppCompatActivity {
 
                     .setNegativeButton((getString(R.string.Ok)), (click, arg) -> { }).create().show();
 
+
+
+
+
         });
 
 
@@ -151,14 +155,14 @@ public class CarActivity extends AppCompatActivity {
          * that I we used it to get the transactions and data from listItems
          */
         myList.setOnItemLongClickListener((p,b,pos,id)->{
-            CarData data=listItems.get(pos);
+           // CarData data=listItems.get(pos);
             /**
              * AlertDialog is used to display the box message,
              * also it can be used to ask users to something if the users insert wrong information.
              * the method setMessage jobs to show the listAdapter information
              * in the dialog as a content.
              */
-            AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+           /* AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
             alertDialogBuilder.setTitle(getString(R.string.CarData))
                     .setMessage(
                             (getString(R.string.MakeID))
@@ -169,16 +173,31 @@ public class CarActivity extends AppCompatActivity {
                             +data.modelID
                             +(getString(R.string.ModelName))
                             +data.modelName
-                    )
+                    )*/
                     /**
                      * this is Lambda Expressions if the click is positive then true
                      * otherwise will use the .setNegativeButton to create then show
                      * the result of click.
                      */
-                    .setPositiveButton((getString(R.string.Yes)), (click, arg) -> {
+                    /*.setPositiveButton((getString(R.string.Yes)), (click, arg) -> {
 
                     })
-                    .setNegativeButton((getString(R.string.No)), (click, arg) -> { }).create().show();
+                    .setNegativeButton((getString(R.string.No)), (click, arg) -> { }).create().show();*/
+            CarData data=listItems.get(pos);
+            //Create a bundle to pass data to the new fragment
+            Bundle dataToPass = new Bundle();
+            dataToPass.putString("carName", listItems.get(pos).getCarName() );
+            dataToPass.putInt("id", listItems.get(pos).getId() );
+            dataToPass.putInt("modelID", listItems.get(pos).getModelID() );
+            dataToPass.putString("modelName", listItems.get(pos).getModelName() );
+            boolean sendSide;
+            // if the device is not phone (tablet) load the fragment
+
+                Intent nextActivity = new Intent(CarActivity.this, CarResultActivity.class);
+                nextActivity.putExtras(dataToPass);
+                startActivityForResult(nextActivity,100);
+
+
             return true;
         });
 

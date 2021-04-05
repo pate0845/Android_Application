@@ -5,21 +5,33 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity"
     android:orientation="vertical"
+    android:background="@drawable/black"
+
     >
+
     <RelativeLayout
-        android:layout_width="368dp"
-        android:layout_height="442dp"
+        android:layout_width="337dp"
+        android:layout_height="525dp"
         android:layout_centerInParent="true"
         android:textAlignment="center"
         tools:layout_editor_absoluteX="8dp"
-        tools:layout_editor_absoluteY="34dp">
+        tools:layout_editor_absoluteY="60dp"
+
+        >
+
 
         <Button
             android:id="@+id/butnCar"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:text="@string/car"
             android:layout_centerHorizontal="true"
+            android:layout_marginTop="150dp"
+            android:text="@string/car"
+            android:textColor="@color/black"
+            android:textSize="16dp"
+            android:backgroundTint="@color/LightSteelBlue"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp"
             />
 
         <Button
@@ -28,7 +40,11 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/butnCar"
             android:layout_centerHorizontal="true"
+            android:layout_marginTop="8dp"
+            android:textSize="16dp"
             android:text="@string/soccer"
+            android:backgroundTint="@color/LightSteelBlue"
+            android:textColor="@color/black"
             />
 
         <Button
@@ -38,6 +54,9 @@
             android:layout_below="@+id/butnSoccer"
             android:layout_centerHorizontal="true"
             android:text="@string/Songster"
+            android:textSize="16dp"
+            android:backgroundTint="@color/LightSteelBlue"
+            android:textColor="@color/black"
             />
 
         <Button
@@ -46,7 +65,11 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/butnSongster"
             android:layout_centerHorizontal="true"
-            android:text="@string/Trivia" />
+            android:text="@string/Trivia"
+            android:textSize="16dp"
+            android:backgroundTint="@color/LightSteelBlue"
+            android:textColor="@color/black"
+            />
 
     </RelativeLayout>
 </RelativeLayout>

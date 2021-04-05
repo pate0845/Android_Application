@@ -11,7 +11,9 @@
     <string name="Yes">Yes</string>
     <string name="No">No</string>
     <string name="search">search</string>
-    <string name="car">Search For A Car</string>
+    <string name="car">Search For A Car
+
+    </string>
     <string name="soccer">Search for Soccer Items</string>
     <string name="Songster">Search For Songster</string>
     <string name="Trivia">Search For Trivia</string>
@@ -29,4 +31,6 @@
     Third, lookup for the car that you are inserted in and then click and hold.
      Fourth, you will get and dialogue box, which contains the information about the car.</string>
     <string name="help">Instruction</string>
+
+
 </resources>
