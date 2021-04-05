@@ -27,8 +27,8 @@ public class MainActivity extends AppCompatActivity {
         sharedPreferences = getSharedPreferences("email", Context.MODE_PRIVATE);
         //saving the value to pass to other page
         String save_email = sharedPreferences.getString("email", "");
-        //putting the email in edittext
 
+        //putting the email in edittext
         email.setText(email.getText().toString());
         //initializing progress bar
         ProgressBar progress = findViewById(R.id.progressBar);
@@ -37,7 +37,8 @@ public class MainActivity extends AppCompatActivity {
         //setting progress to 50%
         setProgress(25);
 
-        //using onclick listener to login and start other activity
+        /*using onclick listener to login and start other activity
+         */
         btn.setOnClickListener(click -> {
             setProgress(100);
             Toast.makeText(getApplicationContext(), "You are taken to search page on Click", Toast.LENGTH_LONG);
@@ -48,7 +49,9 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-
+/*when the page is not open it will save the
+data of the user from the edit text and loads when it will open
+ */
     protected void onPause(){
         super.onPause();
         EditText login;
