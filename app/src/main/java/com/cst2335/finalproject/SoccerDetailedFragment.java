@@ -1,12 +1,13 @@
 package com.cst2335.finalproject;
 
-import android.content.Context;
+import android.content.ContentValues;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.os.Bundle;
 
-import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -14,15 +15,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.RadioButton;
 import android.widget.TextView;
 
 import com.google.android.material.snackbar.Snackbar;
 
-import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
 
 /**
@@ -33,6 +31,7 @@ import java.net.URL;
 public class SoccerDetailedFragment extends Fragment {
     Bitmap currPic;
     ImageView imageview;
+    //AppCompatActivity parentActivity;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -43,9 +42,13 @@ public class SoccerDetailedFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
+
+
     public SoccerDetailedFragment() {
         // Required empty public constructor
     }
+
+    public SQLiteDatabase db;
 
     /**
      * Use this factory method to create a new instance of
@@ -69,6 +72,8 @@ public class SoccerDetailedFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+
+
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
@@ -78,6 +83,10 @@ public class SoccerDetailedFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+        //SoccerDataBase dbHelper = new SoccerDataBase(parentActivity);
+        //db = dbHelper.getWritableDatabase();
+
         // Inflate the layout for this fragment
         //return inflater.inflate(R.layout.fragment_soccer_detailed, container, false);
         Bundle dataFromActivity;
@@ -85,10 +94,18 @@ public class SoccerDetailedFragment extends Fragment {
         View result =  inflater.inflate(R.layout.fragment_soccer_detailed, container, false);    // Inflate the layout for this fragment
         Button saveButton = result.findViewById(R.id.saving);
         saveButton.setOnClickListener( c -> {
+            ContentValues cv = new ContentValues();
+            cv.put(SoccerDataBase.COL_Title, dataFromActivity.getString("Title"));
+            cv.put(SoccerDataBase.COL_PubDate,dataFromActivity.getString("PubDate"));
+            cv.put(SoccerDataBase.COL_Image, dataFromActivity.getString("Image"));
+
+          //long id = db.insert(SoccerDataBase.TABLE_NAME,null , cv);
+
             Snackbar snackbar = Snackbar
                     .make(saveButton,getString(R.string.ssave),Snackbar.LENGTH_LONG);
             snackbar.show();
         });
+
 
 
 
