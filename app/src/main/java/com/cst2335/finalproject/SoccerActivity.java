@@ -183,19 +183,21 @@ public class SoccerActivity extends AppCompatActivity {
             case R.id.item2:
                 androidx.appcompat.app.AlertDialog.Builder builder = new androidx.appcompat.app.AlertDialog.Builder(this);
                 builder.setTitle("Instructions")
-                        .setMessage(" ")
+                        .setMessage("Click on the Soccer new to see full new, image and date, " +
+                                " you can add any new in favourites and delete it from favourite list ")
                         .setCancelable(false)
 
                         .setPositiveButton("OK", (click, arg) -> {
                         })
                         .create().show();
-                message = "Click on the Soccer new to see full new, image and date";
+                message = "";
                 break;
             case R.id.item3:
                 Intent goTofav = new Intent(SoccerActivity.this, Soccer_Favorites_Activity.class);
                 startActivity ( goTofav );
                 break;
         }
+
         return true;
     }
     /**
