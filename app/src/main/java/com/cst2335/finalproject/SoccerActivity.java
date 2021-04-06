@@ -182,14 +182,14 @@ public class SoccerActivity extends AppCompatActivity {
                 break;
             case R.id.item2:
                 androidx.appcompat.app.AlertDialog.Builder builder = new androidx.appcompat.app.AlertDialog.Builder(this);
-                builder.setTitle("Title")
+                builder.setTitle("Instructions")
                         .setMessage(" ")
                         .setCancelable(false)
 
                         .setPositiveButton("OK", (click, arg) -> {
                         })
                         .create().show();
-                message = "You clicked the help";
+                message = "Click on the Soccer new to see full new, image and date";
                 break;
             case R.id.item3:
                 Intent goTofav = new Intent(SoccerActivity.this, Soccer_Favorites_Activity.class);
