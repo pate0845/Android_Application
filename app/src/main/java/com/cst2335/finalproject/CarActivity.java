@@ -8,16 +8,24 @@ package com.cst2335.finalproject;
  * Porpuse: Project for mobile application car database.
  */
 
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -28,6 +36,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
 
 import org.json.JSONArray;
@@ -49,12 +58,17 @@ import java.util.ArrayList;
  * that is inherited from AppCompatActivity
  */
 public class CarActivity extends AppCompatActivity {
+    String savedCar;
+    Boolean IsPhone;
+    String curre;
+    Bitmap currePic;
+    String CurrePicName;
     /*
     * this array is listed all the array attribute in the listItem
     *  the adapter can give access to items and responsible to create
     * view for each item
      */
-    ArrayList<CarData> listItems;
+    ArrayList<CarData> carlistItems;
     MyListAdapter adapter = new MyListAdapter();
 
     /**
@@ -65,6 +79,18 @@ public class CarActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_car);
+        // new code for tool bar
+//        setContentView(R.layout.car_tool_bar);
+
+//        DrawerLayout drawer = findViewById(R.id.drawer_layout);
+//        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this,
+//                drawer, tBar, R.string.open, R.string.close);
+//        drawer.addDrawerListener(toggle);
+//        toggle.syncState();
+//
+//        NavigationView navigationView = findViewById(R.id.nav_view);
+//        navigationView.setNavigationItemSelectedListener((NavigationView.OnNavigationItemSelectedListener) this);
+
         /*
         * sharedPreference is used to save the input and read and write the text.
          */
@@ -114,7 +140,7 @@ public class CarActivity extends AppCompatActivity {
             CarQuery req=new CarQuery();
             req.execute("https://vpic.nhtsa.dot.gov/api/vehicles/GetModelsForMake/"+manu+"?format=json");
             /** 
-             * http://www.songsterr.com/a/wa/song?id=XXX
+             *
              * ProgressBar does the download and upload files, which we can called it user interface.
              */
             ProgressBar bar=findViewById(R.id.bar1);
@@ -122,7 +148,7 @@ public class CarActivity extends AppCompatActivity {
             /**
              * we used .clear() to clear all the hiding information that we search for.
              */
-            listItems.clear();
+            carlistItems.clear();
             /**
              *  we use this method to notify the observer that the data is changed, which refresh by itself if the view reflection
              */
@@ -147,7 +173,7 @@ public class CarActivity extends AppCompatActivity {
         /**
          * ArrayList can be helpful in terms of implement the list interface, which can add or remove elements.
          */
-        listItems =  new ArrayList<CarData>();
+        carlistItems =  new ArrayList<CarData>();
         myList.setAdapter(adapter);
         /**
          * the setOnItemLongClickListener method which have four argument,d,pos,id
@@ -183,13 +209,13 @@ public class CarActivity extends AppCompatActivity {
 
                     })
                     .setNegativeButton((getString(R.string.No)), (click, arg) -> { }).create().show();*/
-            CarData data=listItems.get(pos);
+            CarData data=carlistItems.get(pos);
             //Create a bundle to pass data to the new fragment
             Bundle dataToPass = new Bundle();
-            dataToPass.putString("carName", listItems.get(pos).getCarName() );
-            dataToPass.putInt("id", listItems.get(pos).getId() );
-            dataToPass.putInt("modelID", listItems.get(pos).getModelID() );
-            dataToPass.putString("modelName", listItems.get(pos).getModelName() );
+            dataToPass.putString("carName", carlistItems.get(pos).getCarName() );
+            dataToPass.putInt("id", carlistItems.get(pos).getId() );
+            dataToPass.putInt("modelID", carlistItems.get(pos).getModelID() );
+            dataToPass.putString("modelName", carlistItems.get(pos).getModelName() );
             boolean sendSide;
             // if the device is not phone (tablet) load the fragment
 
@@ -202,18 +228,62 @@ public class CarActivity extends AppCompatActivity {
         });
 
     }
-
     /**
-     * MyListAdapter is a clause that inherited from BaseAdapter
-     * which is job to get show the vertical lise by using listView.
+     *
      */
+    @Override
+    /**
+     * using onPause method as there is another activity has been launched
+     */
+    protected void onPause() {
+
+        super.onPause();
+        SharedPreferences Abdul = getSharedPreferences("fileName", MODE_PRIVATE);
+        SharedPreferences.Editor myEdit =Abdul.edit();
+        myEdit.putString("searching",savedCar);
+        myEdit.commit();
+    }
+
+
+//    public boolean onNavigationItemSelected( MenuItem item) {
+//
+//        String message = null;
+//
+//        switch(item.getItemId())
+//        {
+//            case R.id.carview:
+//                Intent goToToolBar  = new Intent(CarActivity.this, CarActivity.class);
+//                startActivity( goToToolBar);
+//                break;
+//            case R.id.carSave:
+//                Intent goToSave  = new Intent(CarActivity.this, CarActivity.class);
+//                startActivity( goToSave);
+//                break;
+//            case R.id.help_item:
+//                finish();
+//                break;
+//            case R.id.carShopping:
+//                Intent goToShopping  = new Intent(CarActivity.this, CarActivity.class);
+//                startActivity( goToShopping);
+//                break;
+//        }
+//        DrawerLayout drawerLayout = findViewById(R.id.drawer_layout);
+//        drawerLayout.closeDrawer(GravityCompat.START);
+//
+//        Toast.makeText(this, "NavigationDrawer: " + message, Toast.LENGTH_LONG).show();
+//        return false;
+//    }
+        /**
+         * MyListAdapter is a clause that inherited from BaseAdapter
+         * which is job to get show the vertical lise by using listView.
+         */
     private class MyListAdapter extends BaseAdapter {
         /**
          * getCount is returning count total list of the adapter
          * @return ListItem.size
          */
         public int getCount() {
-            return listItems.size();
+            return carlistItems.size();
         }
 
         /**
@@ -222,7 +292,7 @@ public class CarActivity extends AppCompatActivity {
          * @return listItems.get
          */
         public Object getItem(int position) {
-            return listItems.get(position);
+            return carlistItems.get(position);
         }
 
         /**
@@ -231,7 +301,7 @@ public class CarActivity extends AppCompatActivity {
          * @return listItems.get
          */
         public long getItemId(int position) {
-            return listItems.get(position).id;
+            return carlistItems.get(position).id;
         }
 
         /**
@@ -246,7 +316,7 @@ public class CarActivity extends AppCompatActivity {
              * LayoutInflater: is building the view object and taking the XML file as a input.
              */
             LayoutInflater inflater = getLayoutInflater();
-            CarData data = listItems.get(position);
+            CarData data = carlistItems.get(position);
             View newView= null;
             newView = inflater.inflate(R.layout.cars_items, parent,false);
             TextView carView = newView.findViewById(R.id.carNames);
@@ -327,7 +397,7 @@ public class CarActivity extends AppCompatActivity {
                             object.getString("Model_Name")
                     );
                     // this will add all data from JOSN to the listItems
-                    listItems.add(data);
+                    carlistItems.add(data);
                 }
                 publishProgress(100);
             } catch (MalformedURLException e) {

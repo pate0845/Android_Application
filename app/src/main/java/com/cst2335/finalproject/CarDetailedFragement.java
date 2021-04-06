@@ -1,13 +1,19 @@
 package com.cst2335.finalproject;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.os.AsyncTask;
 import android.os.Bundle;
-
 import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -15,7 +21,8 @@ import android.widget.TextView;
  * create an instance of this fragment.
  */
 public class CarDetailedFragement extends Fragment {
-
+    Bitmap currePic;
+    ImageView carimageview;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -39,12 +46,12 @@ public class CarDetailedFragement extends Fragment {
      */
     // TODO: Rename and change types and number of parameters
     public static CarDetailedFragement newInstance(String param1, String param2) {
-        CarDetailedFragement fragment = new CarDetailedFragement();
+        CarDetailedFragement Carfragment = new CarDetailedFragement();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
+        Carfragment.setArguments(args);
+        return Carfragment;
     }
 
     @Override
@@ -67,16 +74,55 @@ public class CarDetailedFragement extends Fragment {
 
         TextView CarName = result.findViewById(R.id.CarId);                                  //Receive the news
         TextView Carname = result.findViewById(R.id.CarName);
-        TextView ModelID = result.findViewById(R.id.ModelIDtxt);
+        TextView ModelID = result.findViewById(R.id.ModelID);
         TextView Modelname = result.findViewById(R.id.ModelNametxt);
 
         CarName.setText(String.valueOf( dataFromActivity.getInt("id")));
         Carname.setText(dataFromActivity.getString("carName"));
-        ModelID.setText(dataFromActivity.getString("modelID"));
+        ModelID.setText(String.valueOf( dataFromActivity.getInt("modelID")));
         Modelname.setText(dataFromActivity.getString("modelName"));
 
 
-
+            ImageView carimageview = result.findViewById(R.id.carimageview);
+            new CarImageLoadTask(dataFromActivity.getString("CarImage"), carimageview).execute();
         return  result;
+    }
+
+
+
+    class CarImageLoadTask  extends AsyncTask<Void, Void, Bitmap> {
+        private String CarUrl;
+        private ImageView carimageView;
+
+        public CarImageLoadTask(String Carurl, ImageView carimageView) {
+            this.CarUrl = Carurl;
+            this.carimageView = carimageView;
+        }
+
+        @Override
+        protected Bitmap doInBackground(Void... params) {
+            try {
+                URL urlConnection = new URL(CarUrl);
+                HttpURLConnection connection = (HttpURLConnection) urlConnection
+                        .openConnection();
+                connection.setDoInput(true);
+                connection.connect();
+                InputStream input = connection.getInputStream();
+                Bitmap carBitmap = BitmapFactory.decodeStream(input);
+                return carBitmap;
+            } catch (Exception e) {
+                e.printStackTrace();
+
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Bitmap result) {
+            super.onPostExecute(result);
+
+            carimageView.setImageBitmap(result);
+
+        }
     }
 }

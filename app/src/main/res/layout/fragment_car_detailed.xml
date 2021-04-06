@@ -6,10 +6,17 @@ android:layout_height="match_parent"
 tools:context=".CarDetailedFragement">
 
 <!-- TODO: Update blank fragment layout -->
-<TextView
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:height="50dp"
+        android:id="@+id/holder"/>
+
+    <TextView
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-
+android:layout_below="@+id/holder"
     android:id="@+id/CarId"
     android:textSize="30dp"
     android:textStyle="bold"
@@ -18,7 +25,12 @@ tools:context=".CarDetailedFragement">
     android:paddingEnd="5dp"
     android:paddingTop="5dp"/>
 
-
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="300dp"
+        android:id="@+id/carimageview"
+        android:layout_below="@+id/Newslbl"
+        />
 
 
 <TextView
@@ -34,7 +46,7 @@ tools:context=".CarDetailedFragement">
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/CarName"
-        android:id="@+id/ModelIDtxt"
+        android:id="@+id/ModelID"
         android:textSize="15dp"
         android:textStyle="bold"
         android:gravity="start"
@@ -42,7 +54,7 @@ tools:context=".CarDetailedFragement">
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/ModelIDtxt"
+        android:layout_below="@+id/ModelID"
         android:id="@+id/ModelNametxt"
         android:textSize="15dp"
         android:textStyle="bold"

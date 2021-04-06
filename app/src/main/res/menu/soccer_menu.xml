@@ -23,7 +23,4 @@
         android:title="Go to help"/>    <!-- This uses showAsAction=always, so look at icon= parameter -->
 
 
-
-
-
 </menu>

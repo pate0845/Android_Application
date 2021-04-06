@@ -3,29 +3,32 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
 
-    <item android:id="@+id/item1"
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/inputText">
+
+    </EditText>
+
+    <item android:id="@+id/carview"
         android:title="@string/review"
         android:icon="@drawable/review"
         android:orderInCategory="50"
         app:showAsAction="always"/>  <!-- This uses showAsAction=always, so look at icon= parameter -->
 
 
-    <item android:id="@+id/search_item"
+    <item android:id="@+id/carSave"
         android:orderInCategory="75"
         android:icon="@drawable/save"
         app:showAsAction="always"
         android:title="@string/save"/>    <!-- This uses showAsAction=always, so look at icon= parameter -->
 
 
-    <item android:id="@+id/help_item"
+    <item android:id="@+id/carShopping"
         android:icon="@drawable/shopping"
         android:title="Look at globe"
         app:showAsAction="always"
         android:orderInCategory="100"/> <!-- This uses showAsAction=never, so look at title= parameter -->
 
-    <item android:id="@+id/icon"
-        android:orderInCategory="125"
-        app:showAsAction="never"
-        android:title="Icon"/>
 
 </menu>
