@@ -104,7 +104,6 @@ public class SoccerActivity extends AppCompatActivity {
         alertDialog.setPositiveButton("YES",(dialog,which)->{
 
             savedString = input.getText().toString();
-            Toast.makeText(this,"Saved",Toast.LENGTH_SHORT).show();
             dialog.cancel();
         });
         alertDialog.show();
@@ -116,6 +115,7 @@ public class SoccerActivity extends AppCompatActivity {
             News news = listItems.get(position);
             //Create a bundle to pass data to the new fragment
             Bundle dataToPass = new Bundle();
+            //dataToPass.putInt("id", listItems.get(position).getID() );
             dataToPass.putString("Title", listItems.get(position).getTitle() );
             dataToPass.putString("Date", listItems.get(position).getDate() );
             dataToPass.putString("Image", listItems.get(position).getImage() );
@@ -192,10 +192,10 @@ public class SoccerActivity extends AppCompatActivity {
                 message = "You clicked the help";
                 break;
             case R.id.item3:
-                message = "You clicked item 3";
+                Intent goTofav = new Intent(SoccerActivity.this, Soccer_Favorites_Activity.class);
+                startActivity ( goTofav );
                 break;
         }
-        Toast.makeText(this, message, Toast.LENGTH_LONG).show();
         return true;
     }
     /**

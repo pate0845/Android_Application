@@ -1,6 +1,9 @@
 package com.cst2335.finalproject;
 
+import android.app.Activity;
+import android.content.ContentValues;
 import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
@@ -16,6 +19,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.FileOutputStream;
 import java.io.InputStream;
@@ -76,6 +80,9 @@ public class SoccerDetailedFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+        Activity context= getActivity();
+
         // Inflate the layout for this fragment
         //return inflater.inflate(R.layout.fragment_soccer_detailed, container, false);
         Bundle dataFromActivity;
@@ -94,6 +101,24 @@ public class SoccerDetailedFragment extends Fragment {
         ImageView imageview = result.findViewById(R.id.soccerimageview);
 
         new SoccerImageLoadTask(dataFromActivity.getString("Image"), imageview).execute();
+
+
+
+        Button Favoritetbtn = result.findViewById(R.id.favbtn);
+        Favoritetbtn.setOnClickListener(c ->
+        {
+            SQLiteDatabase db;
+            SoccerDataBase dbOpener = new SoccerDataBase(context);
+            db = dbOpener.getWritableDatabase();
+
+            ContentValues cv = new ContentValues();
+            cv.put(SoccerDataBase.Col_title, dataFromActivity.getString("Title"));
+            cv.put(SoccerDataBase.Col_date,dataFromActivity.getString("Date"));
+            cv.put(SoccerDataBase.Col_image, dataFromActivity.getString("Image"));
+
+            long id = db.insert(SoccerDataBase.Table_Name,null , cv);
+            Toast.makeText(context,"Saved",Toast.LENGTH_SHORT).show();
+        });
 
         return  result;
     }
