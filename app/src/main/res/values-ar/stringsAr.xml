@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Final Project</string>
+    <string name="app_name">المشروع النهائي</string>
     <string name="searching">You are searching: </string>
     <string name="CarData">CarData</string>
     <string name="MakeName">undo</string>
@@ -9,6 +9,27 @@
     <string name="ModelName">undo</string>
     <string name="ModelID">undo</string>
     <string name="success">success</string>
-    <string name="Yes">Yes</string>
-    <string name="No">No</string>
+    <string name="Yes">نعم</string>
+    <string name="No">لا</string>
+    <string name="instruction">حـذف</string>
+    <string name="soccerDelete">هل تريد ان تحذف هذا الخبر؟؟</string>
+    <string name="no">لا</string>
+    <string name="yes">نعم</string>
+    <string name="ratting">تقييم</string>
+    <string name="sccoerhome">أذهب الى الرئيسسية</string>
+    <string name="Instructions">انقر على كرة القدم الجديدة لرؤية الصورة والتاريخ الجديد بالكامل ،
+                                 يمكنك إضافة أي جديد في المفضلة وحذفه من قائمة المفضلة</string>
+    <string name="sFavo">أذهب الى المفضلة</string>
+    <string name="shelp">لقد ضغط على التعليمات</string>
+    <string name="Rating">تقييم</string>
+    <string name="Instr">التعليمات</string>
+    <string name="dataSave">حفظ</string>
+    <string name="sDelete">حذف</string>
+    <string name="OK">نعم</string>
+    <string name="scSearch">أبحث عن سيارات</string>
+    <string name="sfinsish">أنهاء</string>
+    <string name="Ssoccer">أبحث عن اخبار كرة القدم</string>
+    <string name="sSong">أبحث عن اغاني</string>
+    <string name="sTrivia">أبحث عن فوازير</string>
+    <string name="title_activity_soccer__favorites_">""</string>
 </resources>

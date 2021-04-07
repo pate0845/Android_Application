@@ -117,7 +117,7 @@ public class SoccerDetailedFragment extends Fragment {
             cv.put(SoccerDataBase.Col_image, dataFromActivity.getString("Image"));
 
             long id = db.insert(SoccerDataBase.Table_Name,null , cv);
-            Toast.makeText(context,"Saved",Toast.LENGTH_SHORT).show();
+            Toast.makeText(context,getString(R.string.dataSave),Toast.LENGTH_SHORT).show();
         });
 
         return  result;

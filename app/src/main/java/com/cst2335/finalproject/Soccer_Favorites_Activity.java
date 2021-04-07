@@ -38,9 +38,9 @@ public class Soccer_Favorites_Activity extends AppCompatActivity {
         listView.setOnItemLongClickListener((parent, view, position, id)->{
             News SoccerNew = FavList.get(position);
             AlertDialog.Builder alertdialogbuilder = new AlertDialog.Builder(this);
-            alertdialogbuilder.setTitle("Delete")
-                    .setMessage("Do you want to delete this? The selected row is:  " + position )
-                    .setPositiveButton("yes", (click, arg)->{
+            alertdialogbuilder.setTitle(getString(R.string.sDelete))
+                    .setMessage(getString(R.string.soccerDelete)+ position )
+                    .setPositiveButton(getString(R.string.yes), (click, arg)->{
 
                         deletenew(SoccerNew);
                         FavList.remove(position);
@@ -55,7 +55,7 @@ public class Soccer_Favorites_Activity extends AppCompatActivity {
 
                         myAdapter.notifyDataSetChanged();
                     })
-                    .setNegativeButton("no", (click, arg)->{
+                    .setNegativeButton(getString(R.string.no), (click, arg)->{
                         myAdapter.notifyDataSetChanged();
                     })
                     .create().show();

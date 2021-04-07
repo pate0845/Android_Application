@@ -89,7 +89,7 @@ public class SoccerActivity extends AppCompatActivity {
          */
 
         AlertDialog.Builder alertDialog = new AlertDialog.Builder(SoccerActivity.this);
-        alertDialog.setTitle("Rating");
+        alertDialog.setTitle(getString(R.string.Rating));
         /**
          *Edit text for input user's rating.
          *rating is saved as savedString in SharedPreferences to show the next time when start the application
@@ -101,7 +101,7 @@ public class SoccerActivity extends AppCompatActivity {
                 LinearLayout.LayoutParams.MATCH_PARENT);
         input.setLayoutParams(lp);
         alertDialog.setView(input);
-        alertDialog.setPositiveButton("YES",(dialog,which)->{
+        alertDialog.setPositiveButton(getString(R.string.Yes),(dialog,which)->{
 
             savedString = input.getText().toString();
             dialog.cancel();
@@ -178,24 +178,23 @@ public class SoccerActivity extends AppCompatActivity {
             //what to do when the menu item is selected:
             case R.id.item1:
                 finish();
-                message = "Goto Settings";
+                message = getString(R.string.sccoerhome);
                 break;
             case R.id.item2:
                 androidx.appcompat.app.AlertDialog.Builder builder = new androidx.appcompat.app.AlertDialog.Builder(this);
-                builder.setTitle("Instructions")
-                        .setMessage("Click on the Soccer new to see full new, image and date, " +
-                                " you can add any new in favourites and delete it from favourite list ")
+                builder.setTitle(getString(R.string.Instr))
+                        .setMessage(getString(R.string.Instructions))
                         .setCancelable(false)
 
-                        .setPositiveButton("OK", (click, arg) -> {
+                        .setPositiveButton(getString(R.string.OK), (click, arg) -> {
                         })
                         .create().show();
-                message = "Instructions";
+                message = getString(R.string.shelp);
                 break;
             case R.id.item3:
                 Intent goTofav = new Intent(SoccerActivity.this, Soccer_Favorites_Activity.class);
                 startActivity ( goTofav );
-                message = "Goto Favorites";
+                message = getString(R.string.sFavo);
                 break;
         }
         Toast.makeText(this, message, Toast.LENGTH_LONG).show();
