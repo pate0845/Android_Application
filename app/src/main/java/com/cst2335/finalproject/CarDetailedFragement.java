@@ -1,5 +1,8 @@
 package com.cst2335.finalproject;
 
+import android.app.Activity;
+import android.content.ContentValues;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
@@ -8,8 +11,10 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.InputStream;
 import java.net.HttpURLConnection;
@@ -23,6 +28,7 @@ import java.net.URL;
 public class CarDetailedFragement extends Fragment {
     Bitmap currePic;
     ImageView carimageview;
+    Activity context;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -71,7 +77,7 @@ public class CarDetailedFragement extends Fragment {
         Bundle dataFromActivity;
         dataFromActivity = getArguments();
         View result =  inflater.inflate(R.layout.fragment_car_detailed, container, false);    // Inflate the layout for this fragment
-
+        context = getActivity();
         TextView CarName = result.findViewById(R.id.CarId);                                  //Receive the news
         TextView Carname = result.findViewById(R.id.CarName);
         TextView ModelID = result.findViewById(R.id.ModelID);
@@ -81,48 +87,66 @@ public class CarDetailedFragement extends Fragment {
         Carname.setText(dataFromActivity.getString("carName"));
         ModelID.setText(String.valueOf( dataFromActivity.getInt("modelID")));
         Modelname.setText(dataFromActivity.getString("modelName"));
+        Button Favoritetbtn = result.findViewById(R.id.addV);
+        Favoritetbtn.setOnClickListener(c ->
+        {
+            SQLiteDatabase db;
+            CarDataBase dbOpener = new CarDataBase(context);
+            db = dbOpener.getWritableDatabase();
 
+            ContentValues Ccv = new ContentValues();
+            Ccv.put(CarDataBase.Col_id, dataFromActivity.getString("id"));
+            Ccv.put(CarDataBase.Col_MakeName, dataFromActivity.getString("carName"));
+            Ccv.put(CarDataBase.Col_modelName,dataFromActivity.getString("modelName"));
+            Ccv.put(CarDataBase.Col_modelId, dataFromActivity.getString("modelID"));
 
-            ImageView carimageview = result.findViewById(R.id.carimageview);
-            new CarImageLoadTask(dataFromActivity.getString("CarImage"), carimageview).execute();
+            long id = db.insert(CarDataBase.Table_Name,null , Ccv);
+            Toast.makeText(context,"Saved", Toast.LENGTH_SHORT).show();
+        });
+
         return  result;
-    }
+
+
+//            ImageView carimageview = result.findViewById(R.id.carimageview);
+//            new CarImageLoadTask(dataFromActivity.getString("CarImage"), carimageview).execute();
+//        return  result;
+   }
 
 
 
-    class CarImageLoadTask  extends AsyncTask<Void, Void, Bitmap> {
-        private String CarUrl;
-        private ImageView carimageView;
+//    class CarImageLoadTask  extends AsyncTask<Void, Void, Bitmap> {
+//        private String CarUrl;
+//        private ImageView carimageView;
+//
+//        public CarImageLoadTask(String Carurl, ImageView carimageView) {
+//            this.CarUrl = Carurl;
+//            this.carimageView = carimageView;
+//        }
+//
+//        @Override
+//        protected Bitmap doInBackground(Void... params) {
+//            try {
+//                URL urlConnection = new URL(CarUrl);
+//                HttpURLConnection connection = (HttpURLConnection) urlConnection
+//                        .openConnection();
+//                connection.setDoInput(true);
+//                connection.connect();
+//                InputStream input = connection.getInputStream();
+//                Bitmap carBitmap = BitmapFactory.decodeStream(input);
+//                return carBitmap;
+//            } catch (Exception e) {
+//                e.printStackTrace();
+//
+//            }
+//            return null;
+//        }
 
-        public CarImageLoadTask(String Carurl, ImageView carimageView) {
-            this.CarUrl = Carurl;
-            this.carimageView = carimageView;
-        }
-
-        @Override
-        protected Bitmap doInBackground(Void... params) {
-            try {
-                URL urlConnection = new URL(CarUrl);
-                HttpURLConnection connection = (HttpURLConnection) urlConnection
-                        .openConnection();
-                connection.setDoInput(true);
-                connection.connect();
-                InputStream input = connection.getInputStream();
-                Bitmap carBitmap = BitmapFactory.decodeStream(input);
-                return carBitmap;
-            } catch (Exception e) {
-                e.printStackTrace();
-
-            }
-            return null;
-        }
-
-        @Override
-        protected void onPostExecute(Bitmap result) {
-            super.onPostExecute(result);
-
-            carimageView.setImageBitmap(result);
-
-        }
-    }
+//        @Override
+//        protected void onPostExecute(Bitmap result) {
+//            super.onPostExecute(result);
+//
+//            carimageView.setImageBitmap(result);
+//
+//        }
+ //   }
 }

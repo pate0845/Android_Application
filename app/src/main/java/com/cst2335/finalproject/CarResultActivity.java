@@ -47,26 +47,31 @@ String carName;
         {
             //what to do when the menu item is selected:
             case R.id.carview:
-
+                String url = "http://www.google.com/search?q="+carName+modelName;
+                Intent in = new Intent(Intent.ACTION_VIEW);
+                in.setData(Uri.parse(url));
+                startActivity(in);
                 finish();
                 message = "Go to View Cars";
                 break;
             case R.id.carSave:
                 androidx.appcompat.app.AlertDialog.Builder builder = new androidx.appcompat.app.AlertDialog.Builder(this);
-                builder.setTitle("Save Cars")
-                        .setMessage(" ")
-                        .setCancelable(false)
+                //builder.setTitle("Save Cars")
+                        //.setMessage(" ")
+                        //.setCancelable(false)
+                        //.create().show();
+                        //.setPositiveButton("OK", (click, arg) -> {
+                            Intent nextActivity = new Intent(CarResultActivity.this, Car_Favorites_Activity.class);
 
-                        .setPositiveButton("OK", (click, arg) -> {
+                            startActivity(nextActivity);
+                       // })
 
-                        })
-                        .create().show();
                 message = "You clicked to save the a car";
                 break;
             case R.id.carShopping:
-                String url = "https://www.autotrader.ca/cars/?mdl="+carName+"&make="+modelName+"&loc=K2G1V8";
+                String url1 = "https://www.autotrader.ca/cars/?mdl="+carName+"&make="+modelName+"&loc=K2G1V8";
                 Intent i = new Intent(Intent.ACTION_VIEW);
-                i.setData(Uri.parse(url));
+                i.setData(Uri.parse(url1));
                 startActivity(i);
                 message = "You clicked To shop a car";
                 break;

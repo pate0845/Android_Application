@@ -12,6 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FinalProject">
         <activity android:name=".CarResultActivity"></activity>
+        <activity android:name=".Car_Favorites_Activity"></activity>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

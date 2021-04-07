@@ -9,7 +9,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="start"
-        android:textSize="15dp"
+        android:textSize="25dp"
         android:id="@+id/CarFav_Name"
         android:textColor="@color/black"/>
 
@@ -18,9 +18,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="start"
-        android:textSize="15dp"
+        android:textSize="25dp"
         android:id="@+id/CarFav_Model"
-        android:layout_below="@+id/CarFav_Name"
+        android:layout_toEndOf="@+id/CarFav_Name"
         android:textColor="@color/black"/>
+
+
 
 </RelativeLayout>

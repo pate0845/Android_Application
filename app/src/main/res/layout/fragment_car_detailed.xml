@@ -60,4 +60,12 @@ android:layout_below="@+id/holder"
         android:textStyle="bold"
         android:gravity="start"
         />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/addV"
+        android:text="@string/AddV"
+       android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        />
 </RelativeLayout>

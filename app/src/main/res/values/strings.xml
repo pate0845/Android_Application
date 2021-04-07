@@ -29,6 +29,7 @@
     Third, lookup for the car that you are inserted in and then click and hold.
      Fourth, you will get and dialogue box, which contains the information about the car.</string>
     <string name="help">Instruction</string>
+    <string name="AddV">Add to Favorites</string>
 
 
 </resources>
