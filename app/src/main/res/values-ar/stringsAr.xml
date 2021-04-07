@@ -31,4 +31,16 @@
         . اخيرا:سوف يظهر مربع حوار يحتوي على معلومات حول السيارة المختارة</string>
     <string name="help">تعلميات</string>
     <string name="AddV">أضف الى المفضلة</string>
+    <string name="carview">أذهب الى معاينة السيارات</string>
+    <string name="savedCar">التفاصيل السيارات المحفوظة</string>
+    <string name="carshopping">انت ذاهب لتتسوق سيارات</string>
+    <string name="carsaved">حفظت</string>
+    <string name="carsearching">يبحث</string>
+    <string name="cardelete">حذف</string>
+    <string name="deletemessage">هل تريد ان تحذف هذه التفاصيل؟ الصف المحدد هوا:  </string>
+    <string name="yes">نعم</string>
+    <string name="no">لا</string>
+    <string name="carFinish">أغلق</string>
+    <string name="selection">أختار تطبيق</string>
+    <string name="homePage">أذهب الى صفحة البحث</string>
 </resources>

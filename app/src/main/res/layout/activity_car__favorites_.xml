@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/Seashell"
     android:orientation="vertical">
     <ListView
         android:id="@+id/CarFavoritlistView1"
@@ -14,10 +15,12 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Finish"
+        android:text="@string/carFinish"
         android:id="@+id/Carfinishbtn"
-        android:textColor="@color/black"
+        android:textColor="@color/BlanchedAlmond"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
+        android:textStyle="bold"
+        android:background="@color/white"
         />
 </RelativeLayout>

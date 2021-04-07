@@ -101,7 +101,7 @@ public class CarDetailedFragement extends Fragment {
             Ccv.put(CarDataBase.Col_modelId, dataFromActivity.getString("modelID"));
 
             long id = db.insert(CarDataBase.Table_Name,null , Ccv);
-            Toast.makeText(context,"Saved", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context,getString(R.string.carsaved), Toast.LENGTH_SHORT).show();
         });
 
         return  result;

@@ -5,7 +5,8 @@
     android:layout_height="match_parent"
     android:rowCount="3"
     android:columnCount="2"
-    android:backgroundTint="@color/Red"
+    android:background="@color/Seashell"
+
     >
 
     <TextView
@@ -17,7 +18,7 @@
         android:paddingBottom="20dp"
         android:layout_row="0"
         android:layout_columnSpan="2"
-        android:text="Select Your App"
+        android:text="@string/selection"
         android:textColor="@color/Brown"
         android:textStyle="bold"
         />
@@ -39,7 +40,10 @@
                 android:layout_height="fill_parent"
                 android:text="@string/car"
                 android:layout_weight="1"
-
+                android:textColor="@color/Brown"
+                android:textStyle="bold"
+                android:scaleType="fitXY"
+                android:textSize="16dp"
                 />
 
 
@@ -50,13 +54,18 @@
                 android:layout_weight="1"
                 android:background="@android:color/transparent"
                 android:drawableTop="@drawable/soccer"
-                android:text="@string/soccer" />
+                android:text="@string/soccer"
+                android:textColor="@color/Brown"
+                android:textStyle="bold"
+                android:textSize="16dp"
+                />
         </TableRow>
 
         <TableRow
             android:layout_width="fill_parent"
             android:layout_height="0dp"
-            android:layout_weight="1" >
+            android:layout_weight="1"
+            android:textStyle="bold">
 
             <Button
                 android:id="@+id/butnSongster"
@@ -66,7 +75,9 @@
                 android:background="@android:color/transparent"
                 android:drawableTop="@drawable/music"
                 android:text="@string/Songster"
-
+                android:textColor="@color/Brown"
+                android:textStyle="bold"
+                android:textSize="16dp"
                 />
 
             <Button
@@ -75,8 +86,11 @@
                 android:background="@android:color/transparent"
                 android:layout_width="0dp"
                 android:text="@string/Trivia"
-                android:layout_height="312dp"
-                android:layout_weight="1" />
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:textColor="@color/Brown"
+                android:textStyle="bold"
+                android:textSize="16dp"/>
         </TableRow>
 
     </TableLayout>

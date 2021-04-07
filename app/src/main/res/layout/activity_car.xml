@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/Seashell"
     tools:context=".CarActivity">
 
 
@@ -19,6 +20,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Search"
+        android:textStyle="bold"
+        android:background="@color/white"
         android:id="@+id/Search">
 
     </Button>
@@ -33,7 +36,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/help_item"
-        android:text="@string/help"/>
+        android:text="@string/help"
+        android:textStyle="bold"
+        android:background="@color/white"
+        />
 
     <ListView
     android:id="@+id/ListView1"

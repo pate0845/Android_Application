@@ -240,7 +240,7 @@ public class CarActivity extends AppCompatActivity {
         super.onPause();
         SharedPreferences Abdul = getSharedPreferences("fileName", MODE_PRIVATE);
         SharedPreferences.Editor myEdit =Abdul.edit();
-        myEdit.putString("searching",savedCar);
+        myEdit.putString(getString(R.string.carsearching),savedCar);
         myEdit.commit();
     }
 
