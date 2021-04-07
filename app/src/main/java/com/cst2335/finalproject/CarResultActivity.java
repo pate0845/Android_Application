@@ -3,6 +3,8 @@ package com.cst2335.finalproject;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -10,7 +12,8 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 public class CarResultActivity extends AppCompatActivity {
-
+String modelName;
+String carName;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -18,7 +21,8 @@ public class CarResultActivity extends AppCompatActivity {
         Bundle dataToPass = getIntent().getExtras();                                                //get the data that was passed from FragmentExample
         Toolbar tBar = (Toolbar)findViewById(R.id.Cartoolbr);
         setSupportActionBar(tBar);
-
+        carName = dataToPass.getString("carName");
+        modelName = dataToPass.getString("modelName");
         //This is copied directly from FragmentExample.java
         CarDetailedFragement dFragment = new CarDetailedFragement();
         dFragment.setArguments( dataToPass ); //pass data to the the fragment
@@ -43,6 +47,7 @@ public class CarResultActivity extends AppCompatActivity {
         {
             //what to do when the menu item is selected:
             case R.id.carview:
+
                 finish();
                 message = "Go to View Cars";
                 break;
@@ -59,6 +64,10 @@ public class CarResultActivity extends AppCompatActivity {
                 message = "You clicked to save the a car";
                 break;
             case R.id.carShopping:
+                String url = "https://www.autotrader.ca/cars/?mdl="+carName+"&make="+modelName+"&loc=K2G1V8";
+                Intent i = new Intent(Intent.ACTION_VIEW);
+                i.setData(Uri.parse(url));
+                startActivity(i);
                 message = "You clicked To shop a car";
                 break;
         }
