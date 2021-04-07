@@ -190,13 +190,15 @@ public class SoccerActivity extends AppCompatActivity {
                         .setPositiveButton("OK", (click, arg) -> {
                         })
                         .create().show();
-                message = "";
+                message = "Instructions";
                 break;
             case R.id.item3:
                 Intent goTofav = new Intent(SoccerActivity.this, Soccer_Favorites_Activity.class);
                 startActivity ( goTofav );
+                message = "Goto Favorites";
                 break;
         }
+        Toast.makeText(this, message, Toast.LENGTH_LONG).show();
 
         return true;
     }

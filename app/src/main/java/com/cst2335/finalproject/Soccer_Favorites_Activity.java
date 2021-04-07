@@ -14,6 +14,8 @@ import android.widget.TextView;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.material.snackbar.Snackbar;
+
 import java.util.ArrayList;
 
 public class Soccer_Favorites_Activity extends AppCompatActivity {
@@ -42,6 +44,11 @@ public class Soccer_Favorites_Activity extends AppCompatActivity {
 
                         deletenew(SoccerNew);
                         FavList.remove(position);
+                        Snackbar snackbar = Snackbar
+                                .make(listView,getString(R.string.instruction),Snackbar.LENGTH_LONG);
+                                //.setAction(getString(R.string.undo) , (View.OnClickListener) view -> {
+                               // });
+                        snackbar.show();
 
                         Button finishButton = findViewById(R.id.finishbtn);
                         finishButton.setOnClickListener(c->finishButton.callOnClick());
