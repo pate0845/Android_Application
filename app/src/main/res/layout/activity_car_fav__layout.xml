@@ -22,7 +22,7 @@
         android:textSize="25dp"
         android:id="@+id/CarFav_Model"
         android:layout_toEndOf="@+id/CarFav_Name"
-        android:textColor="@color/black"/>
+        android:textColor="@color/white"/>
 
 
 

@@ -65,6 +65,7 @@ android:layout_below="@+id/holder"
         android:layout_height="wrap_content"
         android:id="@+id/addV"
         android:text="@string/AddV"
+        android:textColor="@color/black"
        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         />

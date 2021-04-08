@@ -17,10 +17,10 @@
         android:layout_height="wrap_content"
         android:text="@string/carFinish"
         android:id="@+id/Carfinishbtn"
-        android:textColor="@color/BlanchedAlmond"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:textStyle="bold"
+        android:textColor="@color/black"
         android:background="@color/white"
         />
 </RelativeLayout>
