@@ -32,4 +32,15 @@
     <string name="hint">Recherchez votre album préféré</string>
     <string name="search">Chercher</string>
     <string name="hello_world">Bonjour Square World!</string>
+    <string name="project">Chanteur</string>
+    <string name="project_name">Projet:Chanteur</string>
+    <string name="tool_menu">Le menu d aide est ouvert</string>
+    <string name="tool_menu2">L application Songster est ouverte</string>
+    <string name="main_page_toast">Vous êtes redirigé vers la page de recherche en cliquant sur</string>
+    <string name="toast_favlist_song_add">La liste des favoris est vide</string>
+    <string name="toast_favlist_song_remove">supprimé de la liste des favoris</string>
+    <string name="toast_simple_remove">supprimé de la liste</string>
+    <string name="delete_song">Effacer</string>
+    <string name="dismiss">Rejeter</string>
+    <string name="addtofav">Ajouter aux favoris</string>
 </resources>

@@ -88,6 +88,10 @@ public class BlankFragment extends Fragment {
 
     }
 
+    /*
+    this method is used to know that our fragment has been attached to an
+    activity
+     */
     @Override
     public void onAttach( Context context) {
         super.onAttach(context);

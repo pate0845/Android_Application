@@ -33,5 +33,16 @@
         to band or artist.You can also see the information by clicking on the and also add them to favourite list by pressing favourite button.
         By hitting the star next to search button it will load all your favourite songs.You can also remove the songs from your favourite list by long clicking them.</string>
 <string name="help5">Dismiss</string>
+<string name="project">Songster</string>
+    <string name="project_name">Project:Songster</string>
     <string name="help6">Welcome To Songster</string>
+    <string name="tool_menu">Help Menu is opened</string>
+    <string name="tool_menu2">Songster App is opened</string>
+    <string name="toast_favlist_song_add">Favourite List is Empty</string>
+    <string name="main_page_toast">You are taken to search page on Click</string>
+    <string name="toast_favlist_song_remove">removed from Favourite List</string>
+    <string name="toast_simple_remove"> removed from List</string>
+    <string name="delete_song">Delete</string>
+    <string name="dismiss">Dismiss</string>
+    <string name="addtofav">Add To Favourite</string>
 </resources>

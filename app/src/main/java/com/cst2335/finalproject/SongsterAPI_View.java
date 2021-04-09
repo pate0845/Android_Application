@@ -27,9 +27,14 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+
+import com.google.android.material.navigation.NavigationView;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
+import org.xmlpull.v1.XmlPullParser;
 
 import java.io.BufferedReader;
 import java.io.InputStream;
@@ -82,6 +87,9 @@ public class SongsterAPI_View extends AppCompatActivity {
         sp=getSharedPreferences("Search",Context.MODE_PRIVATE);
         String artist_search=sp.getString("Search","");
         search.setText(artist_search);
+        //declaring the navigation menu
+        NavigationView nav=findViewById(R.id.nav_vie);
+        nav.setNavigationItemSelectedListener(this::onNavigationItemSelected);
         //initializing progress bar
         progressBar = findViewById(R.id.progressBar2);
         //initializing the favourite button
@@ -103,7 +111,6 @@ public class SongsterAPI_View extends AppCompatActivity {
             setProgress(25);
             songlist.clear();
             display_toast = search.getText().toString();
-            search.setText("");
         });
 
         /*This onclick feature will load the list with
@@ -111,10 +118,11 @@ public class SongsterAPI_View extends AppCompatActivity {
          */
         fav_btn.setOnClickListener(onclick -> {
             songlist.clear();
+            fav_songlist.clear();
             favourite = true;
             loadDatabase();
             if (fav_songlist.isEmpty()) {
-                Toast.makeText(getApplicationContext(), "Favourite List is Empty", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), getString(R.string.toast_favlist_song_add), Toast.LENGTH_SHORT).show();
                 setProgress(100);
             }
             list.setAdapter(songAdapter = new SongAdapter(this, fav_songlist));
@@ -132,13 +140,13 @@ public class SongsterAPI_View extends AppCompatActivity {
                 alert.setTitle("" + getString(R.string.delete))
                         .setMessage("" + getString(R.string.row) + position + "\n" +
                                 "" + getString(R.string.data) + id)
-                        .setNegativeButton("Delete", (click, arg) -> {
+                        .setNegativeButton(getString(R.string.delete_song), (click, arg) -> {
                             fav_songlist.remove(loadfavourite);
                             deletedatabase(loadfavourite);
                             songAdapter.notifyDataSetChanged();
-                            Toast.makeText(getApplicationContext(), fav_songlist.get(position).song_name + " removed from Favourite List", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), fav_songlist.get(position).song_name + getString(R.string.toast_favlist_song_remove), Toast.LENGTH_SHORT).show();
                         })
-                        .setNeutralButton("Dismiss", (click, b) -> {
+                        .setNeutralButton(getString(R.string.dismiss), (click, b) -> {
                         })
                         .create().show();
             } else {
@@ -147,21 +155,21 @@ public class SongsterAPI_View extends AppCompatActivity {
                 alert.setTitle("" + getString(R.string.delete))
                         .setMessage("" + getString(R.string.row) + position + "\n" +
                                 "" + getString(R.string.data) + id)
-                        .setNegativeButton("Delete", (click, arg) -> {
-                            Toast.makeText(getApplicationContext(), songlist.get(position).song_name + " removed from List", Toast.LENGTH_SHORT).show();
+                        .setNegativeButton(getString(R.string.delete_song), (click, arg) -> {
+                            Toast.makeText(getApplicationContext(), songlist.get(position).song_name + getString(R.string.toast_simple_remove), Toast.LENGTH_SHORT).show();
                             songlist.remove(loadMessage);
                             songAdapter.notifyDataSetChanged();
                         })
-                        .setNeutralButton("Dismiss", (click, b) -> {
+                        .setNeutralButton(getString(R.string.dismiss), (click, b) -> {
                         })
-                        .setPositiveButton("Add to Favourite", (click, areg) -> {
+                        .setPositiveButton(getString(R.string.addtofav), (click, areg) -> {
                             Song_Database database = new Song_Database(this);
                             db = database.getWritableDatabase();
                             searched_songs.put(Song_Database.COL_SONG_ID, songlist.get(position).song_id);
                             searched_songs.put(Song_Database.COL_ARTIST_ID, songlist.get(position).artist_id);
                             searched_songs.put(Song_Database.COL_SONG_NAME, songlist.get(position).song_name);
                             db.insert(Song_Database.TABLE_NAME, null, searched_songs);
-                            Toast.makeText(getApplicationContext(), songlist.get(position).song_name + " added To Favourite List", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), songlist.get(position).song_name + getString(R.string.addtofav), Toast.LENGTH_SHORT).show();
                             songlist.remove(loadMessage);
                             songAdapter.notifyDataSetChanged();
                         })
@@ -260,11 +268,10 @@ public class SongsterAPI_View extends AppCompatActivity {
         @Override
         public String doInBackground(String... args) {
             try {
-                progressBar.setVisibility(View.INVISIBLE);
                 URL url = new URL(URL_query);
                 HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
                 InputStream response = urlConnection.getInputStream();
-                BufferedReader read = new BufferedReader(new InputStreamReader(response, "UTF-8"), 8);
+                BufferedReader read = new BufferedReader(new InputStreamReader(response, "UTF-8"),20);
                 StringBuilder build = new StringBuilder();
                 String line = null;
                 while ((line = read.readLine()) != null) {
@@ -281,13 +288,15 @@ public class SongsterAPI_View extends AppCompatActivity {
                     artist_id = artist_data.getInt("id");
                     songData songdata = new songData(song_title, artist_id, song_id, i + 1);
                     songlist.add(songdata);
-                    setProgress(25);
+
                 }
             } catch (Exception e) {
                 e.printStackTrace();
             }
             return "";
         }
+
+
 
         /*This will load all the data when all the back ground process is done
          */
@@ -353,6 +362,7 @@ public class SongsterAPI_View extends AppCompatActivity {
                     "\nSong id:" + currentsong.getSong_id() +
                     "\nArtist id:" + currentsong.getArtist_id());
             setProgress(100);
+            progressBar.setVisibility(View.INVISIBLE);
             return view;
         }
     }
@@ -373,15 +383,41 @@ public class SongsterAPI_View extends AppCompatActivity {
      */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if (R.id.item1 == item.getItemId()) {
-            AlertDialog.Builder alert = new AlertDialog.Builder(this);
-            alert.setTitle(R.string.help6)
-                    .setMessage(R.string.help).setNeutralButton(R.string.help5, (click, b) -> {
-            }).create().show();
+        String message=null;
+        switch (item.getItemId()) {
+            case R.id.item1:
+                AlertDialog.Builder alert = new AlertDialog.Builder(this);
+                alert.setTitle(R.string.help6)
+                        .setMessage(R.string.help).setNeutralButton(R.string.help5, (click, b) -> {
+                }).create().show();
+                message=getString(R.string.tool_menu);
+                break;
+            case R.id.item2:
+                Intent gotosongster = new Intent(this, MainActivity.class);
+                startActivity(gotosongster);
+                message=getString(R.string.tool_menu2);
+                break;
         }
+        Toast.makeText(this,message,Toast.LENGTH_SHORT).show();
         return true;
     }
 
+    /*
+    Needed for the onNavigationItemSelected interface:
+     */
+    public boolean onNavigationItemSelected( MenuItem item) {
+        Intent gotosongster = null;
+        switch(item.getItemId())
+        {
+            case R.id.item2:
+                gotosongster=new Intent(this,MainActivity.class);
+                startActivity(gotosongster);
+                break;
+        }
+        DrawerLayout drawerLayout = findViewById(R.id.drawer_layou);
+        drawerLayout.closeDrawer(GravityCompat.START);
+        return false;
+    }
     /*
     This method will save the searched text so that when the user
      login again it will be used to load the searched text

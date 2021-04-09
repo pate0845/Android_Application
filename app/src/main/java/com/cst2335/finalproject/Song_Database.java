@@ -10,7 +10,7 @@ public class Song_Database extends SQLiteOpenHelper {
     declaring the variables including the table and column names
      */
     protected final static String DATABASE_NAME="songster.db";
-    public final static int VERSION_NUM=13;
+    public final static int VERSION_NUM=15;
     public final static String TABLE_NAME="SAVE_DATA";
     public final static String COL_SONG_NAME="TITLE";
     public final static String COL_ID="id";
