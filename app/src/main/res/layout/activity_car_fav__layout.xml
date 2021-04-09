@@ -12,7 +12,9 @@
         android:layout_gravity="start"
         android:textSize="25dp"
         android:id="@+id/CarFav_Name"
-        android:textColor="@color/black"/>
+        android:textColor="@color/black"
+        android:paddingTop="12dp"
+        android:paddingBottom="12dp"/>
 
     <TextView
         android:paddingStart="15dp"
@@ -22,7 +24,9 @@
         android:textSize="25dp"
         android:id="@+id/CarFav_Model"
         android:layout_toEndOf="@+id/CarFav_Name"
-        android:textColor="@color/white"/>
+        android:textColor="@color/black"
+        android:paddingTop="12dp"
+        android:paddingBottom="12dp"/>
 
 
 

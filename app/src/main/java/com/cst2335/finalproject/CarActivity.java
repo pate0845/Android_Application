@@ -20,6 +20,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -36,6 +37,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
 
@@ -57,7 +59,7 @@ import java.util.ArrayList;
  * CarActivity which is the name of the class that I have used for my part
  * that is inherited from AppCompatActivity
  */
-public class CarActivity extends AppCompatActivity {
+public class CarActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, BottomNavigationView.OnNavigationItemSelectedListener {
     String savedCar;
     Boolean IsPhone;
     String curre;
@@ -79,17 +81,16 @@ public class CarActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_car);
-        // new code for tool bar
-//        setContentView(R.layout.car_tool_bar);
+        Toolbar T = findViewById(R.id.toolbar);
+        setSupportActionBar(T);
 
-//        DrawerLayout drawer = findViewById(R.id.drawer_layout);
-//        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this,
-//                drawer, tBar, R.string.open, R.string.close);
-//        drawer.addDrawerListener(toggle);
-//        toggle.syncState();
+        DrawerLayout Cardrawer = findViewById(R.id.Cardrawer_layout);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, Cardrawer, T, R.string.open, R.string.close);
+        Cardrawer.addDrawerListener(toggle);
+        toggle.syncState();
 //
-//        NavigationView navigationView = findViewById(R.id.nav_view);
-//        navigationView.setNavigationItemSelectedListener((NavigationView.OnNavigationItemSelectedListener) this);
+        NavigationView CarnavigationView = findViewById(R.id.Carnav_view);
+        CarnavigationView.setNavigationItemSelectedListener(this);
 
         /*
         * sharedPreference is used to save the input and read and write the text.
@@ -105,16 +106,12 @@ public class CarActivity extends AppCompatActivity {
         /**
          * this button is used to search for the item on the app.
          */
-        Button helpB = findViewById(R.id.help_item);
+       /* Button helpB = findViewById(R.id.help_item);
         helpB.setOnClickListener(e->{
             AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
             alertDialogBuilder.setTitle(getString(R.string.CarData))
                     .setMessage(R.string.instruction)
-                    /**
-                     * this is Lambda Expressions if the click is positive then true
-                     * otherwise will use the .setNegativeButton to create then show
-                     * the result of click.
-                     */
+
 
 
 
@@ -124,7 +121,7 @@ public class CarActivity extends AppCompatActivity {
 
 
 
-        });
+        });*/
 
 
 
@@ -244,36 +241,91 @@ public class CarActivity extends AppCompatActivity {
         myEdit.commit();
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu items for use in the action bar
+        MenuInflater Carinflater = getMenuInflater();
+        Carinflater.inflate(R.menu.car_menu, menu);
 
-//    public boolean onNavigationItemSelected( MenuItem item) {
-//
-//        String message = null;
-//
-//        switch(item.getItemId())
-//        {
-//            case R.id.carview:
-//                Intent goToToolBar  = new Intent(CarActivity.this, CarActivity.class);
-//                startActivity( goToToolBar);
-//                break;
-//            case R.id.carSave:
-//                Intent goToSave  = new Intent(CarActivity.this, CarActivity.class);
-//                startActivity( goToSave);
-//                break;
-//            case R.id.help_item:
-//                finish();
-//                break;
-//            case R.id.carShopping:
-//                Intent goToShopping  = new Intent(CarActivity.this, CarActivity.class);
-//                startActivity( goToShopping);
-//                break;
-//        }
-//        DrawerLayout drawerLayout = findViewById(R.id.drawer_layout);
-//        drawerLayout.closeDrawer(GravityCompat.START);
-//
-//        Toast.makeText(this, "NavigationDrawer: " + message, Toast.LENGTH_LONG).show();
-//        return false;
-//    }
-        /**
+        return true;
+    }
+
+    @Override
+    public boolean onNavigationItemSelected( MenuItem item) {
+
+        String message = null;
+
+        switch (item.getItemId()) {
+            case R.id.Carinstructions:
+                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+                alertDialogBuilder.setTitle(getString(R.string.CarData))
+                        .setMessage(R.string.instruction)
+                        .setNegativeButton((getString(R.string.Ok)), (click, arg) -> { }).create().show();
+                message = getString(R.string.carview);
+                break;
+            case R.id.carSave:
+                androidx.appcompat.app.AlertDialog.Builder builder = new androidx.appcompat.app.AlertDialog.Builder(this);
+                Intent nextActivity = new Intent(CarActivity.this, Car_Favorites_Activity.class);
+                startActivity(nextActivity);
+                break;
+            case R.id.CarHome:
+                Intent HomeActivity = new Intent(CarActivity.this, MainActivity.class);
+                startActivity(HomeActivity);
+                break;
+
+        }
+        DrawerLayout drawerLayout = findViewById(R.id.Cardrawer_layout);
+        drawerLayout.closeDrawer(GravityCompat.START);
+
+        Toast.makeText(this, "NavigationDrawer: " + message, Toast.LENGTH_LONG).show();
+        return false;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem Caritem) {
+        String message = null;
+        //Look at your menu XML file. Put a case for every id in that file:
+        switch(Caritem.getItemId())
+        {
+
+            //what to do when the menu item is selected:
+            case R.id.Carinstructions:
+                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+                alertDialogBuilder.setTitle(getString(R.string.CarData))
+                        .setMessage(R.string.instruction)
+                        .setNegativeButton((getString(R.string.Ok)), (click, arg) -> { }).create().show();
+                message = getString(R.string.carview);
+                break;
+            case R.id.carSave:
+                androidx.appcompat.app.AlertDialog.Builder builder = new androidx.appcompat.app.AlertDialog.Builder(this);
+               // Intent nextActivity = new Intent(CarResultActivity.this, Car_Favorites_Activity.class);
+               // startActivity(nextActivity);
+
+
+                message = getString(R.string.savedCar);
+                break;
+            case R.id.carShopping:
+               // String url1 = "https://www.autotrader.ca/cars/?mdl="+carName+"&make="+modelName+"&loc=K2G1V8";
+                //Intent i = new Intent(Intent.ACTION_VIEW);
+               // i.setData(Uri.parse(url1));
+                //startActivity(i);
+                message = getString(R.string.carshopping);
+                break;
+            case R.id.carhome:
+//                String url2 = "https://vpic.nhtsa.dot.gov/api/vehicles/GetModelsForMake/"+manu+"?format=json";
+//                Intent i2 = new Intent(Intent.ACTION_VIEW);
+//                i2.setData(Uri.parse(url2));
+//                startActivity(i2);
+                //Intent goToSearchPage  = new Intent(CarResultActivity.this, MainActivity.class);
+                //startActivity(goToSearchPage);
+                message = getString(R.string.homePage);
+                break;
+        }
+
+        Toast.makeText(this, message, Toast.LENGTH_LONG).show();
+        return true;
+    }
+      /**
          * MyListAdapter is a clause that inherited from BaseAdapter
          * which is job to get show the vertical lise by using listView.
          */

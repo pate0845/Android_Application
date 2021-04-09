@@ -86,7 +86,7 @@
     <color name="LightBlue">#ADD8E6</color>
     <color name="DarkGray">#A9A9A9</color>
     <color name="Brown">#A52A2A</color>
-    <color name="Sienna">#A0522D</color>
+    <color name="Sienna">#E3A88C</color>
     <color name="YellowGreen">#9ACD32</color>
     <color name="DarkOrchid">#9932CC</color>
     <color name="PaleGreen">#98FB98</color>
@@ -101,7 +101,7 @@
     <color name="LightSkyBlue">#87CEFA</color>
     <color name="SkyBlue">#87CEEB</color>
     <color name="Gray">#808080</color>
-    <color name="Olive">#808000</color>
+    <color name="Olive">#FFEB3B</color>
     <color name="Purple">#800080</color>
     <color name="Maroon">#800000</color>
     <color name="Aquamarine">#7FFFD4</color>
@@ -147,4 +147,5 @@
     <color name="DarkBlue">#00008B</color>
     <color name="Navy">#000080</color>
     <color name="Black">#000000</color>
+    <color name="Abdul">#E81123</color>
 </resources>

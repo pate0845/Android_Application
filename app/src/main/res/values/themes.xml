@@ -5,7 +5,7 @@
         >
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/Coral</item>
-        <item name="colorPrimaryVariant">@color/Coral</item>
+        <item name="colorPrimaryVariant">@color/Brown</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/teal_200</item>
@@ -16,6 +16,6 @@
         <item name="windowNoTitle">true</item>
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
-
+        <item name="colorBackgroundFloating">@color/Seashell</item>
     </style>
 </resources>

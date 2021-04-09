@@ -43,4 +43,6 @@
     <string name="carFinish">أغلق</string>
     <string name="selection">أختار تطبيق</string>
     <string name="homePage">أذهب الى صفحة البحث</string>
+    <string name="Instructions">التعليمات</string>
+    <string name="GoHome">أذهب الى الصحفة الرئيسية</string>
 </resources>

@@ -42,4 +42,6 @@
     <string name="carFinish">Finish</string>
     <string name="homePage">Go To Search Page</string>
     <string name="selection">Select Your App</string>
+    <string name="Instructions">Instructions</string>
+    <string name="GoHome">Go Home Page</string>
 </resources>

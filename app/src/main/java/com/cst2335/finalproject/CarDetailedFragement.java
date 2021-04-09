@@ -2,6 +2,7 @@ package com.cst2335.finalproject;
 
 import android.app.Activity;
 import android.content.ContentValues;
+import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -88,6 +89,7 @@ public class CarDetailedFragement extends Fragment {
         ModelID.setText(String.valueOf( dataFromActivity.getInt("modelID")));
         Modelname.setText(dataFromActivity.getString("modelName"));
         Button Favoritetbtn = result.findViewById(R.id.addV);
+
         Favoritetbtn.setOnClickListener(c ->
         {
             SQLiteDatabase db;
