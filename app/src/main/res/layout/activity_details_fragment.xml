@@ -1,48 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginLeft="10dp"
-    android:layout_marginTop="10dp"
     tools:context=".DetailsFragment">
+
     <TextView
         android:id="@+id/txt2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/txt1"
-        android:layout_marginLeft="30dp"
-        android:layout_marginTop="30dp"/>
-    <RelativeLayout
+        android:layout_marginTop="40dp"
+        android:layout_marginLeft="30dp"/>
+
+    <RadioGroup
+        android:id="@+id/options"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/txt2"
-        android:layout_marginTop="60dp"
-        android:layout_marginLeft="40dp">
-
-        <Button
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="80dp"
+        >
+        <RadioButton
             android:id="@+id/optBtn1"
-            android:layout_width="300dp"
+            android:layout_width="250dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp" />
+            android:textSize="15sp"/>
 
-        <Button
+        <RadioButton
             android:id="@+id/optBtn2"
-            android:layout_width="300dp"
+            android:layout_width="250dp"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/optBtn1"/>
+            android:layout_below="@+id/optBtn1"
+            android:textSize="15sp"/>
 
-        <Button
+        <RadioButton
             android:id="@+id/optBtn3"
-            android:layout_width="300dp"
+            android:layout_width="250dp"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/optBtn2" />
-
-        <Button
+            android:layout_below="@+id/optBtn2"
+            android:textSize="15sp"/>
+        <RadioButton
             android:id="@+id/optBtn4"
-            android:layout_width="300dp"
+            android:layout_width="250dp"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/optBtn3" />
-    </RelativeLayout>
+            android:layout_below="@+id/optBtn3"
+            android:textSize="15sp"/>
+        <Button
+            android:id="@+id/sbtBtn"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/optBtn3"
+            android:layout_marginTop="40dp"
+            android:layout_marginLeft="150dp"
+            android:textSize="15sp"
+            android:text="SUBMIT"/>
+    </RadioGroup>
 </RelativeLayout>

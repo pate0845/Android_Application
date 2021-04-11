@@ -1,19 +1,14 @@
 package com.cst2335.finalproject;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
 
 import android.os.Bundle;
-import android.widget.ProgressBar;
 
-public class DetailsFragment extends Fragment {
+public class DetailsFragment extends AppCompatActivity {
 
     @Override
-   public void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_details_fragment);
-    }
-
-    private void setContentView(int activity_details_fragment) {
     }
 }
