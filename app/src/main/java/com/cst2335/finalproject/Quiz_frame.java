@@ -154,6 +154,7 @@ public class Quiz_frame extends AppCompatActivity {
         public void onPostExecute(String s) {
             super.onPostExecute(s);
             adapter.notifyDataSetChanged();
+
             progressBar.setVisibility(View.INVISIBLE);
 
     }
