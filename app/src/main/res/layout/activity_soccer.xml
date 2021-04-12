@@ -7,7 +7,6 @@
     android:orientation="vertical"
     tools:context=".SoccerActivity">
 
-
     <androidx.appcompat.widget.Toolbar
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -17,9 +16,9 @@
         android:id="@+id/bar1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/Soccertoolbr"
         android:visibility="invisible"
         style="?android:attr/progressBarStyleHorizontal"
+        android:layout_below="@+id/Soccertoolbr"
         />
 
     <ListView
