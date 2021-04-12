@@ -18,7 +18,7 @@ import android.widget.TextView;
 @author Rutvik Patel
 @version 3
 This class deals with the fragment to show the information of the
-song which user selects
+song which user selects k
  */
 
 public class BlankFragment extends Fragment {
