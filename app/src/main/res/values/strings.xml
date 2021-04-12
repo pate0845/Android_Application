@@ -23,7 +23,7 @@
     <string name="shopping">Shopping</string>
     <string name="goTB">Go To ToolBar</string>
     <string name="Ok">OK</string>
-    <string name="instruction">First, writes the name of the car brand that you are looking for.
+    <string name="Cinstruction">First, writes the name of the car brand that you are looking for.
     Second, click on the search button to load the information about the car brand.
         Note: You can cancel downloading the information by clicking on Unload in the taskbar
     " You will have a list of the car make that belongs to the car brand that you decided.
@@ -38,12 +38,12 @@
     <string name="carsearching">Searching</string>
     <string name="cardelete">Delete</string>
     <string name="deletemessage">Do you want to delete this? The selected row is :  </string>
-    <string name="yes">Yes</string>
-    <string name="no">No</string>
+    <string name="Cyes">Yes</string>
+    <string name="Cno">No</string>
     <string name="carFinish">Finish</string>
     <string name="homePage">Go To Search Page</string>
     <string name="selection">Select Your App</string>
-    <string name="Instructions">Instructions</string>
+    <string name="CInstructions">Instructions</string>
     <string name="GoHome">Go Home Page</string>
 =======
     <!-- TODO: Remove or change this placeholder text -->
