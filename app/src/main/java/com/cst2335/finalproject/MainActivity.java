@@ -30,7 +30,13 @@ public class MainActivity extends AppCompatActivity {
 
             startActivity( goToProfile);
         });
+        Button Trivia  = (Button) findViewById(R.id.butnTrivia);
+        Trivia.setOnClickListener( c -> {
 
+            Intent goToProfile  = new Intent(MainActivity.this, IndexActivity.class);
+
+            startActivity( goToProfile);
+        });
 
     }
 
