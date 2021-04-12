@@ -11,8 +11,21 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.FinalProject">
+ abdul_car
         <activity android:name=".CarResultActivity"></activity>
         <activity android:name=".Car_Favorites_Activity"></activity>
+
+
+      
+        <meta-data
+            android:name="com.google.android.wearable.standalone"
+            android:value="true" />
+
+        <activity
+            android:name=".Soccer_Favorites_Activity"
+            android:label="@string/title_activity_soccer__favorites_"></activity>
+        <activity android:name=".Soccer_Empty" />
+ master
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

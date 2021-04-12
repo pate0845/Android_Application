@@ -37,5 +37,16 @@
         android:gravity="end"
         />
 
+ abdul_car
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/favbtn"
+        android:text="Add to favorite"
+        android:textColor="@color/white"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
+ master
 
 </RelativeLayout>

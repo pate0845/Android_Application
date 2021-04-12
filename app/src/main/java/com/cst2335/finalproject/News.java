@@ -5,6 +5,7 @@ package com.cst2335.finalproject;
  * with three variables title, date and image
  */
 public class News {
+    int id;
     String title;
     String date;
     String image;
@@ -23,7 +24,8 @@ public class News {
      * @param date
      * @param image
      */
-   public News (String title, String date, String image){
+   public News (int id, String title, String date, String image){
+       this.id= id;
         this.title= title;
         this.date= date;
         this.image=image;
@@ -51,5 +53,9 @@ public class News {
      */
     public String getImage(){
        return image;
+    }
+
+    public int getID(){
+        return id;
     }
 }
