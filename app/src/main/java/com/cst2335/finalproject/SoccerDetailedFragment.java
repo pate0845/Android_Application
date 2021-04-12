@@ -1,13 +1,13 @@
 package com.cst2335.finalproject;
 
- abdul_car
+
 import android.content.Context;
 
 import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
- master
+
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
@@ -23,10 +23,10 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.TextView;
- abdul_car
+
 
 import android.widget.Toast;
- master
+
 
 import java.io.FileOutputStream;
 import java.io.InputStream;
@@ -87,12 +87,12 @@ public class SoccerDetailedFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
- abdul_car
+
 
 
         Activity context= getActivity();
 
- master
+
         // Inflate the layout for this fragment
         //return inflater.inflate(R.layout.fragment_soccer_detailed, container, false);
         Bundle dataFromActivity;
@@ -112,7 +112,6 @@ public class SoccerDetailedFragment extends Fragment {
 
         new SoccerImageLoadTask(dataFromActivity.getString("Image"), imageview).execute();
 
- abdul_car
 
 
 
@@ -132,7 +131,7 @@ public class SoccerDetailedFragment extends Fragment {
             Toast.makeText(context,getString(R.string.dataSave),Toast.LENGTH_SHORT).show();
         });
 
- master
+
         return  result;
     }
     class SoccerImageLoadTask  extends AsyncTask<Void, Void, Bitmap> {

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">المشروع النهائي</string>
- abdul_car
+
     <string name="searching">انت تبحث: </string>
     <string name="CarData">بيانات السيارة</string>
     <string name="MakeName"> اسم المنتج</string>
@@ -24,7 +24,7 @@
     <string name="shopping">تسوق</string>
     <string name="goTB">أذهب الى شريط المهام</string>
     <string name="Ok">تم</string>
-    <string name="instruction">اولا:أكتب اسم ماركة السيارة التي تبحث عنها.
+    <string name="Cinstruction">اولا:أكتب اسم ماركة السيارة التي تبحث عنها.
      ثانيا:أنقر على زر البحث لتحميل المعلومات حول ماركة السيارة.
         ملاحظة: يمكنك الغاء تحميل المعلومات على طريق الضغط على الغاء التحميل في شريط المهام
      "سيكون لديك قائمة بماركة السيارة التي تنتمي إلى ماركة السيارة التي قررت.
@@ -39,24 +39,15 @@
     <string name="carsearching">يبحث</string>
     <string name="cardelete">حذف</string>
     <string name="deletemessage">هل تريد ان تحذف هذه التفاصيل؟ الصف المحدد هوا:  </string>
-    <string name="yes">نعم</string>
-    <string name="no">لا</string>
+    <string name="Cyes">نعم</string>
+    <string name="Cno">لا</string>
     <string name="carFinish">أغلق</string>
     <string name="selection">أختار تطبيق</string>
     <string name="homePage">أذهب الى صفحة البحث</string>
-    <string name="Instructions">التعليمات</string>
+    <string name="CInstructions">التعليمات</string>
     <string name="GoHome">أذهب الى الصحفة الرئيسية</string>
 
-    <string name="searching">You are searching: </string>
-    <string name="CarData">CarData</string>
-    <string name="MakeName">undo</string>
-    <string name="undo">undo</string>
-    <string name="MakeID">undo</string>
-    <string name="ModelName">undo</string>
-    <string name="ModelID">undo</string>
-    <string name="success">success</string>
-    <string name="Yes">نعم</string>
-    <string name="No">لا</string>
+
     <string name="instruction">حـذف</string>
     <string name="soccerDelete">هل تريد ان تحذف هذا الخبر؟؟</string>
     <string name="no">لا</string>
