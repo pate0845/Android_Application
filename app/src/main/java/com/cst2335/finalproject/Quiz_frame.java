@@ -52,6 +52,7 @@ public class Quiz_frame extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz_frame);
 
+        ListView myList = findViewById(R.id.ListView1);
         progressBar = findViewById(R.id.progress);
         progressBar.setVisibility(View.VISIBLE);
         intent=getIntent();
@@ -60,10 +61,14 @@ public class Quiz_frame extends AppCompatActivity {
         level = intent.getStringExtra("level");
 
         TriviaQuiz req = new TriviaQuiz();
-        req.execute("https://opentdb.com/api.php?amount="+Qnumber+"&difficulty="+type+"&type="+level);
+        req.execute("https://opentdb.com/api.php?amount="+Qnumber+"&difficulty="+level+"&type="+type);
+
+        adapter.notifyDataSetChanged();
+        listItems =  new ArrayList<Questions>();
+        myList.setAdapter(adapter);
     }
     /**
-     * MyListAdapter is a clause that inherited from BaseAdapter
+     * TriviaListAdapter is a clause that inherited from BaseAdapter
      * which is job to get show the vertical lise by using listView.
      */
     private class TriviaListAdapter extends BaseAdapter {
@@ -98,10 +103,10 @@ public class Quiz_frame extends AppCompatActivity {
     class TriviaQuiz extends AsyncTask<String, Integer, String> {
 
         @Override
-        protected String doInBackground(String... args) {
+        protected String doInBackground(String... strings) {
             try {
                 publishProgress(25);
-                URL url = new URL(args[0]);
+                URL url = new URL(strings[0]);
                 HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
                 InputStream response = urlConnection.getInputStream();
                 //JSON reading:   Look at slide 26
@@ -140,14 +145,14 @@ public class Quiz_frame extends AppCompatActivity {
         }
 
 
-        public void onProgressUpdate(Integer... args) {
-            super.onProgressUpdate(args);
+        public void onProgressUpdate(Integer... values) {
+            super.onProgressUpdate(values);
             ProgressBar bar=findViewById(R.id.progress);
-            bar.setProgress(args[0]);;
+            bar.setProgress(values[0]);;
         }
         @Override
-        public void onPostExecute(String fromDoInBackground) {
-            super.onPostExecute(fromDoInBackground);
+        public void onPostExecute(String s) {
+            super.onPostExecute(s);
             adapter.notifyDataSetChanged();
             progressBar.setVisibility(View.INVISIBLE);
 
