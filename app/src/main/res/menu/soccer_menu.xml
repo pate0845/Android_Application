@@ -5,25 +5,39 @@
 
     <item android:id="@+id/item1"
         android:title="Go to Main"
+ abdul_car
+        android:icon="@drawable/ic_launcher_background"
+
         android:icon="@drawable/home"
+ master
         android:orderInCategory="10"
         app:showAsAction="always"/>  <!-- This uses the item will put the icon parameter on the toolbar. -->
 
     <item android:id="@+id/item2"
         android:orderInCategory="20"
+ abdul_car
+        android:icon="@drawable/ic_launcher_background"
+
         android:icon="@drawable/about"
+ master
         app:showAsAction="always"
         android:title="Go to help"/>    <!-- This uses showAsAction=always, so look at icon= parameter -->
 
 
     <item android:id="@+id/item3"
         android:orderInCategory="30"
+ abdul_car
+        android:icon="@drawable/ic_launcher_background"
+
         android:icon="@drawable/news"
+ master
         app:showAsAction="always"
         android:title="Go to help"/>    <!-- This uses showAsAction=always, so look at icon= parameter -->
 
 
+ abdul_car
 
 
 
+ master
 </menu>

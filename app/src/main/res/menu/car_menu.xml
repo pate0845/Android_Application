@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/inputText">
+
+    </EditText>
+
+    <item android:id="@+id/carview"
+        android:title="@string/review"
+        android:icon="@drawable/carview"
+        android:orderInCategory="50"
+        app:showAsAction="always"/>  <!-- This uses showAsAction=always, so look at icon= parameter -->
+
+
+    <item android:id="@+id/carSave"
+        android:orderInCategory="75"
+        android:icon="@drawable/save"
+        app:showAsAction="always"
+        android:title="@string/save"/>    <!-- This uses showAsAction=always, so look at icon= parameter -->
+
+
+    <item android:id="@+id/carShopping"
+    android:icon="@drawable/shopping"
+    android:title="Go Shopping"
+    app:showAsAction="always"
+    android:orderInCategory="100"/> <!-- This uses showAsAction=never, so look at title= parameter -->
+
+    <item android:id="@+id/carhome"
+        android:icon="@drawable/home"
+        android:title="homePage"
+        app:showAsAction="always"
+        android:orderInCategory="100"/>
+
+</menu>

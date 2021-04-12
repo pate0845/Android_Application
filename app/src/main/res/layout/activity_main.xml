@@ -1,11 +1,112 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
-    android:orientation="vertical"
+    android:rowCount="3"
+    android:columnCount="2"
+    android:background="@color/Seashell"
+
     >
+ abdul_car
+
+    <TextView
+        android:id="@+id/headerText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textSize="32dp"
+        android:paddingBottom="20dp"
+        android:layout_row="0"
+        android:layout_columnSpan="2"
+        android:text="@string/selection"
+        android:textColor="@color/Brown"
+        android:textStyle="bold"
+        />
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" >
+
+            <Button
+                android:id="@+id/butnCar"
+                android:drawableTop="@drawable/car"
+                android:layout_width="0dp"
+                android:background="@android:color/transparent"
+                android:layout_height="fill_parent"
+                android:text="@string/car"
+                android:layout_weight="1"
+                android:textColor="@color/Brown"
+                android:textStyle="bold"
+                android:scaleType="fitXY"
+                android:textSize="16dp"
+                />
+
+
+            <Button
+                android:id="@+id/butnSoccer"
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:background="@android:color/transparent"
+                android:drawableTop="@drawable/soccer"
+                android:text="@string/soccer"
+                android:textColor="@color/Brown"
+                android:textStyle="bold"
+                android:textSize="16dp"
+                />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:textStyle="bold">
+
+            <Button
+                android:id="@+id/butnSongster"
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:background="@android:color/transparent"
+                android:drawableTop="@drawable/music"
+                android:text="@string/Songster"
+                android:textColor="@color/Brown"
+                android:textStyle="bold"
+                android:textSize="16dp"
+                />
+
+            <Button
+                android:id="@+id/butnTrivia"
+                android:drawableTop="@drawable/trivia"
+                android:background="@android:color/transparent"
+                android:layout_width="0dp"
+                android:text="@string/Trivia"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:textColor="@color/Brown"
+                android:textStyle="bold"
+                android:textSize="16dp"/>
+        </TableRow>
+
+    </TableLayout>
+</GridLayout>
+
+
+
+
+
+
+
+
+
+
+
     <RelativeLayout
         android:layout_width="368dp"
         android:layout_height="442dp"
@@ -50,3 +151,4 @@
 
     </RelativeLayout>
 </RelativeLayout>
+master

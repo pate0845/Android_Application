@@ -115,7 +115,10 @@ public class SoccerActivity extends AppCompatActivity {
             News news = listItems.get(position);
             //Create a bundle to pass data to the new fragment
             Bundle dataToPass = new Bundle();
+ abdul_car
+
             //dataToPass.putInt("id", listItems.get(position).getID() );
+ master
             dataToPass.putString("Title", listItems.get(position).getTitle() );
             dataToPass.putString("Date", listItems.get(position).getDate() );
             dataToPass.putString("Image", listItems.get(position).getImage() );
@@ -166,6 +169,40 @@ public class SoccerActivity extends AppCompatActivity {
         // Inflate the menu items for use in the action bar
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.soccer_menu, menu);
+abdul_car
+
+        return true;
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        String message = null;
+        //Look at your menu XML file. Put a case for every id in that file:
+        switch(item.getItemId())
+        {
+            //what to do when the menu item is selected:
+            case R.id.item1:
+                finish();
+                message = "Goto Settings";
+                break;
+            case R.id.item2:
+                androidx.appcompat.app.AlertDialog.Builder builder = new androidx.appcompat.app.AlertDialog.Builder(this);
+                builder.setTitle("Title")
+                        .setMessage(" ")
+                        .setCancelable(false)
+
+                        .setPositiveButton("OK", (click, arg) -> {
+                        })
+                        .create().show();
+                message = "You clicked the help";
+                break;
+            case R.id.item3:
+                message = "You clicked item 3";
+                break;
+        }
+        Toast.makeText(this, message, Toast.LENGTH_LONG).show();
+        return true;
+    }
+
 
         return true;
     }
@@ -201,6 +238,7 @@ public class SoccerActivity extends AppCompatActivity {
 
         return true;
     }
+master
     /**
      * SoccerQuery class inherited from AsyncTask.
      * it's job to mark a method in a annotated class as a Query method,
