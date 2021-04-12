@@ -11,7 +11,19 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.FinalProject">
-        <activity android:name=".Soccer_Empty"></activity>
+
+        <!--
+               Set to true if your app is Standalone, that is, it does not require the handheld
+               app to run.
+        -->
+        <meta-data
+            android:name="com.google.android.wearable.standalone"
+            android:value="true" />
+
+        <activity
+            android:name=".Soccer_Favorites_Activity"
+            android:label="@string/title_activity_soccer__favorites_"></activity>
+        <activity android:name=".Soccer_Empty" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -20,7 +32,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".SoccerActivity" />
-        <activity android:name=".CarActivity"></activity>
+        <activity android:name=".CarActivity" />
     </application>
 
 </manifest>

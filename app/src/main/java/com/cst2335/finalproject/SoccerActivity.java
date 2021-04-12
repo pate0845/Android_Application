@@ -89,7 +89,7 @@ public class SoccerActivity extends AppCompatActivity {
          */
 
         AlertDialog.Builder alertDialog = new AlertDialog.Builder(SoccerActivity.this);
-        alertDialog.setTitle("Rating");
+        alertDialog.setTitle(getString(R.string.Rating));
         /**
          *Edit text for input user's rating.
          *rating is saved as savedString in SharedPreferences to show the next time when start the application
@@ -101,10 +101,9 @@ public class SoccerActivity extends AppCompatActivity {
                 LinearLayout.LayoutParams.MATCH_PARENT);
         input.setLayoutParams(lp);
         alertDialog.setView(input);
-        alertDialog.setPositiveButton("YES",(dialog,which)->{
+        alertDialog.setPositiveButton(getString(R.string.Yes),(dialog,which)->{
 
             savedString = input.getText().toString();
-            Toast.makeText(this,"Saved",Toast.LENGTH_SHORT).show();
             dialog.cancel();
         });
         alertDialog.show();
@@ -116,6 +115,7 @@ public class SoccerActivity extends AppCompatActivity {
             News news = listItems.get(position);
             //Create a bundle to pass data to the new fragment
             Bundle dataToPass = new Bundle();
+            //dataToPass.putInt("id", listItems.get(position).getID() );
             dataToPass.putString("Title", listItems.get(position).getTitle() );
             dataToPass.putString("Date", listItems.get(position).getDate() );
             dataToPass.putString("Image", listItems.get(position).getImage() );
@@ -178,24 +178,27 @@ public class SoccerActivity extends AppCompatActivity {
             //what to do when the menu item is selected:
             case R.id.item1:
                 finish();
-                message = "Goto Settings";
+                message = getString(R.string.sccoerhome);
                 break;
             case R.id.item2:
                 androidx.appcompat.app.AlertDialog.Builder builder = new androidx.appcompat.app.AlertDialog.Builder(this);
-                builder.setTitle("Title")
-                        .setMessage(" ")
+                builder.setTitle(getString(R.string.Instr))
+                        .setMessage(getString(R.string.Instructions))
                         .setCancelable(false)
 
-                        .setPositiveButton("OK", (click, arg) -> {
+                        .setPositiveButton(getString(R.string.OK), (click, arg) -> {
                         })
                         .create().show();
-                message = "You clicked the help";
+                message = getString(R.string.shelp);
                 break;
             case R.id.item3:
-                message = "You clicked item 3";
+                Intent goTofav = new Intent(SoccerActivity.this, Soccer_Favorites_Activity.class);
+                startActivity ( goTofav );
+                message = getString(R.string.sFavo);
                 break;
         }
         Toast.makeText(this, message, Toast.LENGTH_LONG).show();
+
         return true;
     }
     /**
