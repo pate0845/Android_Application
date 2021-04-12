@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">المشروع النهائي</string>
+ abdul_car
+    <string name="searching">انت تبحث: </string>
+    <string name="CarData">بيانات السيارة</string>
+    <string name="MakeName"> اسم المنتج</string>
+    <string name="undo">الغاء التحميل</string>
+    <string name="MakeID">معرف</string>
+    <string name="ModelName">اسم النموذج</string>
+    <string name="ModelID">معرف_النموذج</string>
+    <string name="success">نجاح</string>
+    <string name="Yes">نعم</string>
+    <string name="No">لا</string>
+    <string name="search">بحث</string>
+    <string name="car">أبحث عن سيارات</string>
+    <string name="soccer">ابحث عن أخبار كرة القدم</string>
+    <string name="Songster">أبحث عن مطربين</string>
+    <string name="Trivia">البحث عن الفوازير</string>
+    <string name="open">أفتح</string>
+    <string name="close">أغلق</string>
+    <string name="review">معاينة</string>
+    <string name="save">حفظ</string>
+    <string name="shopping">تسوق</string>
+    <string name="goTB">أذهب الى شريط المهام</string>
+    <string name="Ok">تم</string>
+    <string name="instruction">اولا:أكتب اسم ماركة السيارة التي تبحث عنها.
+     ثانيا:أنقر على زر البحث لتحميل المعلومات حول ماركة السيارة.
+        ملاحظة: يمكنك الغاء تحميل المعلومات على طريق الضغط على الغاء التحميل في شريط المهام
+     "سيكون لديك قائمة بماركة السيارة التي تنتمي إلى ماركة السيارة التي قررت.
+     ثالثا: ابحث عن السيارة التي ترغب بها  فيها ثم  اضغط عليها ضغطة طويلة
+        . اخيرا:سوف يظهر مربع حوار يحتوي على معلومات حول السيارة المختارة</string>
+    <string name="help">تعلميات</string>
+    <string name="AddV">أضف الى المفضلة</string>
+    <string name="carview">أذهب الى معاينة السيارات</string>
+    <string name="savedCar">التفاصيل السيارات المحفوظة</string>
+    <string name="carshopping">انت ذاهب لتتسوق سيارات</string>
+    <string name="carsaved">حفظت</string>
+    <string name="carsearching">يبحث</string>
+    <string name="cardelete">حذف</string>
+    <string name="deletemessage">هل تريد ان تحذف هذه التفاصيل؟ الصف المحدد هوا:  </string>
+    <string name="yes">نعم</string>
+    <string name="no">لا</string>
+    <string name="carFinish">أغلق</string>
+    <string name="selection">أختار تطبيق</string>
+    <string name="homePage">أذهب الى صفحة البحث</string>
+    <string name="Instructions">التعليمات</string>
+    <string name="GoHome">أذهب الى الصحفة الرئيسية</string>
+
+    <string name="searching">You are searching: </string>
+    <string name="CarData">CarData</string>
+    <string name="MakeName">undo</string>
+    <string name="undo">undo</string>
+    <string name="MakeID">undo</string>
+    <string name="ModelName">undo</string>
+    <string name="ModelID">undo</string>
+    <string name="success">success</string>
+    <string name="Yes">نعم</string>
+    <string name="No">لا</string>
+    <string name="instruction">حـذف</string>
+    <string name="soccerDelete">هل تريد ان تحذف هذا الخبر؟؟</string>
+    <string name="no">لا</string>
+    <string name="yes">نعم</string>
+    <string name="ratting">تقييم</string>
+    <string name="sccoerhome">أذهب الى الرئيسسية</string>
+    <string name="Instructions">انقر على كرة القدم الجديدة لرؤية الصورة والتاريخ الجديد بالكامل ،
+                                 يمكنك إضافة أي جديد في المفضلة وحذفه من قائمة المفضلة</string>
+    <string name="sFavo">أذهب الى المفضلة</string>
+    <string name="shelp">لقد ضغط على التعليمات</string>
+    <string name="Rating">تقييم</string>
+    <string name="Instr">التعليمات</string>
+    <string name="dataSave">حفظ</string>
+    <string name="sDelete">حذف</string>
+    <string name="OK">نعم</string>
+    <string name="scSearch">أبحث عن سيارات</string>
+    <string name="sfinsish">أنهاء</string>
+    <string name="Ssoccer">أبحث عن اخبار كرة القدم</string>
+    <string name="sSong">أبحث عن اغاني</string>
+    <string name="sTrivia">أبحث عن فوازير</string>
+    <string name="title_activity_soccer__favorites_">""</string>
+ master
+</resources>
