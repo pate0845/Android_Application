@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="txt1" type="id" />
+    <item name="txt2" type="id" />
+    <item name="submitBtn" type="id" />
+    <item name="ListView1" type="id" />
+    <item name="txt3" type="id" />
+    <item name="editTxt1" type="id" />
+    <item name="gp1" type="id" />
+    <item name="gp2" type="id" />
+    <item name="unAnsTxt" type="id" />
+    <item name="AnsTxt" type="id" />
+    <item name="wrngTxt" type="id" />
+    <item name="unAnsTxt1" type="id" />
+    <item name="AnsTxt1" type="id" />
+    <item name="wrngTxt1" type="id" />
+</resources>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Quiz_frame">
+    <ProgressBar
+        android:id="@+id/progress"
+        android:layout_gravity="center"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
+    <RelativeLayout
+        android:layout_width="150dp"
+        android:layout_height="match_parent"
+        android:id="@+id/R1"
+        android:layout_marginTop="30dp"
+        >
+        <TextView
+            android:id="@id/unAnsTxt"
+            android:text="UnAnswered : "
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_marginTop="20dp"/>
+        <TextView
+            android:id="@id/unAnsTxt1"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_toEndOf="@id/unAnsTxt"/>
+        <TextView
+            android:id="@id/AnsTxt"
+            android:text="Right    : "
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_below="@+id/unAnsTxt"/>
+        <TextView
+            android:id="@id/AnsTxt1"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_toEndOf="@id/AnsTxt"
+            android:layout_below="@+id/unAnsTxt1"/>
+        <TextView
+            android:id="@id/wrngTxt"
+            android:text="Wrong : "
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_below="@+id/AnsTxt"/>
+        <TextView
+            android:id="@id/wrngTxt1"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_toEndOf="@id/wrngTxt"
+            android:layout_below="@+id/AnsTxt1"/>
+    </RelativeLayout>
+    <ListView
+        android:id="@+id/ListView1"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_toRightOf="@id/R1"
+        android:layout_marginTop="30dp">
+    </ListView>
+</RelativeLayout>
