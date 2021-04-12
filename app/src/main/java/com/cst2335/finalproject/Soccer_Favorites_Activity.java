@@ -40,12 +40,12 @@ public class Soccer_Favorites_Activity extends AppCompatActivity {
             AlertDialog.Builder alertdialogbuilder = new AlertDialog.Builder(this);
             alertdialogbuilder.setTitle(getString(R.string.sDelete))
                     .setMessage(getString(R.string.soccerDelete)+ position )
-                    .setPositiveButton(getString(R.string.yes), (click, arg)->{
+                    .setPositiveButton(getString(R.string.Caryes), (click, arg)->{
 
                         deletenew(SoccerNew);
                         FavList.remove(position);
                         Snackbar snackbar = Snackbar
-                                .make(listView,getString(R.string.instruction),Snackbar.LENGTH_LONG);
+                                .make(listView,getString(R.string.Carinstruction),Snackbar.LENGTH_LONG);
                                 //.setAction(getString(R.string.undo) , (View.OnClickListener) view -> {
                                // });
                         snackbar.show();
@@ -55,7 +55,7 @@ public class Soccer_Favorites_Activity extends AppCompatActivity {
 
                         myAdapter.notifyDataSetChanged();
                     })
-                    .setNegativeButton(getString(R.string.no), (click, arg)->{
+                    .setNegativeButton(getString(R.string.Carno), (click, arg)->{
                         myAdapter.notifyDataSetChanged();
                     })
                     .create().show();
