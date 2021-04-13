@@ -20,7 +20,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
-import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -259,7 +258,7 @@ public class CarActivity extends AppCompatActivity implements NavigationView.OnN
                 startActivity(nextActivity);
                 break;
             case R.id.CarHome:
-                Intent HomeActivity = new Intent(CarActivity.this, MainActivity.class);
+                Intent HomeActivity = new Intent(CarActivity.this, SongMainActivity.class);
                 startActivity(HomeActivity);
                 break;
 

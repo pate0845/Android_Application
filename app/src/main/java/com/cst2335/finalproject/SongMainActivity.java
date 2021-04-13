@@ -1,6 +1,5 @@
 package com.cst2335.finalproject;
 
-import android.content.ContentProvider;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -16,13 +15,12 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintSet;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.google.android.material.navigation.NavigationView;
 
-public class MainActivity extends AppCompatActivity {
+public class SongMainActivity extends AppCompatActivity {
     SharedPreferences sharedPreferences;
 
     @Override
@@ -87,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
                message=getString(R.string.tool_menu);
                break;
            case R.id.item2:
-               Intent gotosongster = new Intent(this, MainActivity.class);
+               Intent gotosongster = new Intent(this, SongMainActivity.class);
                startActivity(gotosongster);
                message=getString(R.string.tool_menu2);
                break;
@@ -104,7 +102,7 @@ public class MainActivity extends AppCompatActivity {
         switch(item.getItemId())
         {
             case R.id.item2:
-                gotosongster=new Intent(this,MainActivity.class);
+                gotosongster=new Intent(this, SongMainActivity.class);
                 startActivity(gotosongster);
                 break;
         }

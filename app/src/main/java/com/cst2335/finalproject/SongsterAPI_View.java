@@ -34,7 +34,6 @@ import com.google.android.material.navigation.NavigationView;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
-import org.xmlpull.v1.XmlPullParser;
 
 import java.io.BufferedReader;
 import java.io.InputStream;
@@ -393,7 +392,7 @@ public class SongsterAPI_View extends AppCompatActivity {
                 message=getString(R.string.tool_menu);
                 break;
             case R.id.item2:
-                Intent gotosongster = new Intent(this, MainActivity.class);
+                Intent gotosongster = new Intent(this, SongMainActivity.class);
                 startActivity(gotosongster);
                 message=getString(R.string.tool_menu2);
                 break;
@@ -410,7 +409,7 @@ public class SongsterAPI_View extends AppCompatActivity {
         switch(item.getItemId())
         {
             case R.id.item2:
-                gotosongster=new Intent(this,MainActivity.class);
+                gotosongster=new Intent(this, SongMainActivity.class);
                 startActivity(gotosongster);
                 break;
         }

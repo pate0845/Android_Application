@@ -4,14 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.widget.Button;
-import android.widget.TextView;
 import android.widget.Toast;
 
 public class CarResultActivity extends AppCompatActivity {
@@ -78,7 +75,7 @@ public class CarResultActivity extends AppCompatActivity {
 //                Intent i2 = new Intent(Intent.ACTION_VIEW);
 //                i2.setData(Uri.parse(url2));
 //                startActivity(i2);
-                Intent goToSearchPage  = new Intent(CarResultActivity.this, MainActivity.class);
+                Intent goToSearchPage  = new Intent(CarResultActivity.this, SongMainActivity.class);
                 startActivity(goToSearchPage);
                 message = getString(R.string.homePage);
                 break;
