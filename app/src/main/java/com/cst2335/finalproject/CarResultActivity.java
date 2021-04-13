@@ -1,4 +1,4 @@
-    package com.cst2335.finalproject;
+package com.cst2335.finalproject;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -15,8 +15,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class CarResultActivity extends AppCompatActivity {
-String modelName;
-String carName;
+    String modelName;
+    String carName;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,8 +60,8 @@ String carName;
                 break;
             case R.id.carSave:
                 androidx.appcompat.app.AlertDialog.Builder builder = new androidx.appcompat.app.AlertDialog.Builder(this);
-                    Intent nextActivity = new Intent(CarResultActivity.this, Car_Favorites_Activity.class);
-                    startActivity(nextActivity);
+                Intent nextActivity = new Intent(CarResultActivity.this, Car_Favorites_Activity.class);
+                startActivity(nextActivity);
 
 
                 message = getString(R.string.savedCar);

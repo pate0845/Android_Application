@@ -112,7 +112,7 @@ public class CarDetailedFragement extends Fragment {
 //            ImageView carimageview = result.findViewById(R.id.carimageview);
 //            new CarImageLoadTask(dataFromActivity.getString("CarImage"), carimageview).execute();
 //        return  result;
-   }
+    }
 
 
 
@@ -150,5 +150,5 @@ public class CarDetailedFragement extends Fragment {
 //            carimageView.setImageBitmap(result);
 //
 //        }
- //   }
+    //   }
 }
