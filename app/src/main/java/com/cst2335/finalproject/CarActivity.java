@@ -66,9 +66,9 @@ public class CarActivity extends AppCompatActivity implements NavigationView.OnN
     Bitmap currePic;
     String CurrePicName;
     /*
-    * this array is listed all the array attribute in the listItem
-    *  the adapter can give access to items and responsible to create
-    * view for each item
+     * this array is listed all the array attribute in the listItem
+     *  the adapter can give access to items and responsible to create
+     * view for each item
      */
     ArrayList<CarData> carlistItems;
     MyListAdapter adapter = new MyListAdapter();
@@ -93,7 +93,7 @@ public class CarActivity extends AppCompatActivity implements NavigationView.OnN
         CarnavigationView.setNavigationItemSelectedListener(this);
 
         /*
-        * sharedPreference is used to save the input and read and write the text.
+         * sharedPreference is used to save the input and read and write the text.
          */
         SharedPreferences prefs = getSharedPreferences("fileName", Context.MODE_PRIVATE);
         String savedString = prefs.getString("manu", "");
@@ -111,16 +111,7 @@ public class CarActivity extends AppCompatActivity implements NavigationView.OnN
             AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
             alertDialogBuilder.setTitle(getString(R.string.CarData))
                     .setMessage(R.string.instruction)
-
-
-
-
                     .setNegativeButton((getString(R.string.Ok)), (click, arg) -> { }).create().show();
-
-
-
-
-
         });*/
 
 
@@ -136,7 +127,7 @@ public class CarActivity extends AppCompatActivity implements NavigationView.OnN
              */
             CarQuery req=new CarQuery();
             req.execute("https://vpic.nhtsa.dot.gov/api/vehicles/GetModelsForMake/"+manu+"?format=json");
-            /** 
+            /**
              *
              * ProgressBar does the download and upload files, which we can called it user interface.
              */
@@ -178,7 +169,7 @@ public class CarActivity extends AppCompatActivity implements NavigationView.OnN
          * that I we used it to get the transactions and data from listItems
          */
         myList.setOnItemLongClickListener((p,b,pos,id)->{
-           // CarData data=listItems.get(pos);
+            // CarData data=listItems.get(pos);
             /**
              * AlertDialog is used to display the box message,
              * also it can be used to ask users to something if the users insert wrong information.
@@ -197,13 +188,12 @@ public class CarActivity extends AppCompatActivity implements NavigationView.OnN
                             +(getString(R.string.ModelName))
                             +data.modelName
                     )*/
-                    /**
-                     * this is Lambda Expressions if the click is positive then true
-                     * otherwise will use the .setNegativeButton to create then show
-                     * the result of click.
-                     */
+            /**
+             * this is Lambda Expressions if the click is positive then true
+             * otherwise will use the .setNegativeButton to create then show
+             * the result of click.
+             */
                     /*.setPositiveButton((getString(R.string.Yes)), (click, arg) -> {
-
                     })
                     .setNegativeButton((getString(R.string.No)), (click, arg) -> { }).create().show();*/
             CarData data=carlistItems.get(pos);
@@ -216,9 +206,9 @@ public class CarActivity extends AppCompatActivity implements NavigationView.OnN
             boolean sendSide;
             // if the device is not phone (tablet) load the fragment
 
-                Intent nextActivity = new Intent(CarActivity.this, CarResultActivity.class);
-                nextActivity.putExtras(dataToPass);
-                startActivityForResult(nextActivity,100);
+            Intent nextActivity = new Intent(CarActivity.this, CarResultActivity.class);
+            nextActivity.putExtras(dataToPass);
+            startActivityForResult(nextActivity,100);
 
 
             return true;
@@ -298,16 +288,16 @@ public class CarActivity extends AppCompatActivity implements NavigationView.OnN
                 break;
             case R.id.carSave:
                 androidx.appcompat.app.AlertDialog.Builder builder = new androidx.appcompat.app.AlertDialog.Builder(this);
-               // Intent nextActivity = new Intent(CarResultActivity.this, Car_Favorites_Activity.class);
-               // startActivity(nextActivity);
+                // Intent nextActivity = new Intent(CarResultActivity.this, Car_Favorites_Activity.class);
+                // startActivity(nextActivity);
 
 
                 message = getString(R.string.savedCar);
                 break;
             case R.id.carShopping:
-               // String url1 = "https://www.autotrader.ca/cars/?mdl="+carName+"&make="+modelName+"&loc=K2G1V8";
+                // String url1 = "https://www.autotrader.ca/cars/?mdl="+carName+"&make="+modelName+"&loc=K2G1V8";
                 //Intent i = new Intent(Intent.ACTION_VIEW);
-               // i.setData(Uri.parse(url1));
+                // i.setData(Uri.parse(url1));
                 //startActivity(i);
                 message = getString(R.string.carshopping);
                 break;
@@ -325,10 +315,10 @@ public class CarActivity extends AppCompatActivity implements NavigationView.OnN
         Toast.makeText(this, message, Toast.LENGTH_LONG).show();
         return true;
     }
-      /**
-         * MyListAdapter is a clause that inherited from BaseAdapter
-         * which is job to get show the vertical lise by using listView.
-         */
+    /**
+     * MyListAdapter is a clause that inherited from BaseAdapter
+     * which is job to get show the vertical lise by using listView.
+     */
     private class MyListAdapter extends BaseAdapter {
         /**
          * getCount is returning count total list of the adapter
