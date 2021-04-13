@@ -13,7 +13,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.FinalProject">
-        <activity android:name=".SongMainActivity">
+        <activity android:name=".MainActivity">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -46,11 +46,11 @@
             android:label="@string/title_activity_soccer__favorites_"></activity>
         <activity android:name=".Soccer_Empty" />
 
-
-
-
-        <activity android:name=".SoccerActivity" />
         <activity android:name=".CarActivity" />
+        <activity android:name=".SoccerActivity" />
+
+        <activity android:name=".SongsterAPI_View" />
+        <activity android:name=".SongMainActivity" />
 
     </application>
 
