@@ -62,9 +62,8 @@ import java.util.ArrayList;
 public class CarActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, BottomNavigationView.OnNavigationItemSelectedListener {
     String savedCar;
     Boolean IsPhone;
-    String curre;
-    Bitmap currePic;
-    String CurrePicName;
+    String carName;
+    String modelName;
     /*
     * this array is listed all the array attribute in the listItem
     *  the adapter can give access to items and responsible to create
@@ -298,17 +297,26 @@ public class CarActivity extends AppCompatActivity implements NavigationView.OnN
                 break;
             case R.id.carSave:
                 androidx.appcompat.app.AlertDialog.Builder builder = new androidx.appcompat.app.AlertDialog.Builder(this);
-               // Intent nextActivity = new Intent(CarResultActivity.this, Car_Favorites_Activity.class);
-               // startActivity(nextActivity);
-
-
-                message = getString(R.string.savedCar);
+                Intent nextActivity = new Intent(CarActivity.this, Car_Favorites_Activity.class);
+                startActivity(nextActivity);
+                message = "You are saving a car's details";
                 break;
+
+            case R.id.carview:
+                String url = "http://www.google.com/search?q="+carName+modelName;
+                Intent in = new Intent(Intent.ACTION_VIEW);
+                in.setData(Uri.parse(url));
+                startActivity(in);
+                finish();
+                message = getString(R.string.carview);
+                break;
+
+
             case R.id.carShopping:
-               // String url1 = "https://www.autotrader.ca/cars/?mdl="+carName+"&make="+modelName+"&loc=K2G1V8";
-                //Intent i = new Intent(Intent.ACTION_VIEW);
-               // i.setData(Uri.parse(url1));
-                //startActivity(i);
+                String url2 = "https://www.autotrader.ca/cars/?mdl="+carName+"&make="+modelName+"&loc=K2G1V8";
+                Intent i = new Intent(Intent.ACTION_VIEW);
+                i.setData(Uri.parse(url2));
+                startActivity(i);
                 message = getString(R.string.carshopping);
                 break;
             case R.id.carhome:
@@ -316,10 +324,10 @@ public class CarActivity extends AppCompatActivity implements NavigationView.OnN
 //                Intent i2 = new Intent(Intent.ACTION_VIEW);
 //                i2.setData(Uri.parse(url2));
 //                startActivity(i2);
-                //Intent goToSearchPage  = new Intent(CarResultActivity.this, MainActivity.class);
-                //startActivity(goToSearchPage);
-                message = getString(R.string.homePage);
+                Intent HomeActivity = new Intent(CarActivity.this, MainActivity.class);
+                startActivity(HomeActivity);
                 break;
+
         }
 
         Toast.makeText(this, message, Toast.LENGTH_LONG).show();
