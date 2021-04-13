@@ -1,0 +1,48 @@
+<resources>
+    <string name="title_activity_songster_a_p_i__view">SongsterAPI_View</string>
+    <!--
+    This string is used for square devices and overridden by hello_world in
+    values-round/strings.xml for round devices.
+    -->
+    <string name="hello_world">Hello Square World!</string>
+    <!-- TODO: Remove or change this placeholder text -->
+
+    <!-- welcome page-->
+    <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
+    <string name="welcome">Welcome to Songster, it lets you search your favourite artist or bands</string>
+    <string name="email">Enter you email to get latest updates</string>
+    <string name="emailhint">E-mail Address</string>
+    <!-- fragment-->
+
+    <string name="favbtn">Add To Favourite</string>
+    <string name="play">Play Song</string>
+    <string name="back">Back</string>
+    <string name="calender">Calender</string>
+    <string name="delete">Do you want to delete this?</string>
+    <string name="row">The selected row is:</string>
+    <string name="data">The database id:</string>
+
+    <!--search page-->
+    <string name="searchpage">Songster Search</string>
+    <string name="hint">Search your favourite album</string>
+    <string name="search">Search</string>
+    <string name="header">Songster-API</string>
+    <string name="loginbtn">Click here</string>
+    <string name="app_name" translatable="false" />
+    <string name="help">To search for your favourite artist or band songs type the name in the search bar and it will load the songs related
+        to band or artist.You can also see the information by clicking on the and also add them to favourite list by pressing favourite button.
+        By hitting the star next to search button it will load all your favourite songs.You can also remove the songs from your favourite list by long clicking them.</string>
+<string name="help5">Dismiss</string>
+<string name="project">Songster</string>
+    <string name="project_name">Project:Songster</string>
+    <string name="help6">Welcome To Songster</string>
+    <string name="tool_menu">Help Menu is opened</string>
+    <string name="tool_menu2">Songster App is opened</string>
+    <string name="toast_favlist_song_add">Favourite List is Empty</string>
+    <string name="main_page_toast">You are taken to search page on Click</string>
+    <string name="toast_favlist_song_remove">removed from Favourite List</string>
+    <string name="toast_simple_remove"> removed from List</string>
+    <string name="delete_song">Delete</string>
+    <string name="dismiss">Dismiss</string>
+    <string name="addtofav">Add To Favourite</string>
+</resources>
