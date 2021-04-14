@@ -61,9 +61,8 @@ import java.util.ArrayList;
 public class CarActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, BottomNavigationView.OnNavigationItemSelectedListener {
     String savedCar;
     Boolean IsPhone;
-    String curre;
-    Bitmap currePic;
-    String CurrePicName;
+    String carName;
+    String modelName;
     /*
      * this array is listed all the array attribute in the listItem
      *  the adapter can give access to items and responsible to create
@@ -291,8 +290,16 @@ public class CarActivity extends AppCompatActivity implements NavigationView.OnN
                 // startActivity(nextActivity);
 
 
-                message = getString(R.string.savedCar);
+            case R.id.carview:
+                String url = "http://www.google.com/search?q="+carName+modelName;
+                Intent in = new Intent(Intent.ACTION_VIEW);
+                in.setData(Uri.parse(url));
+                startActivity(in);
+                finish();
+                message = getString(R.string.carview);
                 break;
+
+
             case R.id.carShopping:
                 // String url1 = "https://www.autotrader.ca/cars/?mdl="+carName+"&make="+modelName+"&loc=K2G1V8";
                 //Intent i = new Intent(Intent.ACTION_VIEW);
@@ -305,10 +312,10 @@ public class CarActivity extends AppCompatActivity implements NavigationView.OnN
 //                Intent i2 = new Intent(Intent.ACTION_VIEW);
 //                i2.setData(Uri.parse(url2));
 //                startActivity(i2);
-                //Intent goToSearchPage  = new Intent(CarResultActivity.this, MainActivity.class);
-                //startActivity(goToSearchPage);
-                message = getString(R.string.homePage);
+                Intent HomeActivity = new Intent(CarActivity.this, MainActivity.class);
+                startActivity(HomeActivity);
                 break;
+
         }
 
         Toast.makeText(this, message, Toast.LENGTH_LONG).show();
