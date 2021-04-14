@@ -248,7 +248,7 @@ public class CarActivity extends AppCompatActivity implements NavigationView.OnN
             case R.id.Carinstructions:
                 AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
                 alertDialogBuilder.setTitle(getString(R.string.CarData))
-                        .setMessage(R.string.instruction)
+                        .setMessage(R.string.Carinstruction)
                         .setNegativeButton((getString(R.string.Ok)), (click, arg) -> { }).create().show();
                 message = getString(R.string.carview);
                 break;
@@ -281,7 +281,7 @@ public class CarActivity extends AppCompatActivity implements NavigationView.OnN
             case R.id.Carinstructions:
                 AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
                 alertDialogBuilder.setTitle(getString(R.string.CarData))
-                        .setMessage(R.string.instruction)
+                        .setMessage(R.string.Carinstruction)
                         .setNegativeButton((getString(R.string.Ok)), (click, arg) -> { }).create().show();
                 message = getString(R.string.carview);
                 break;

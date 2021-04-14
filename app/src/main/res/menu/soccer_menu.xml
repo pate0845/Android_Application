@@ -11,17 +11,14 @@
 
     <item android:id="@+id/item2"
         android:orderInCategory="20"
-
         app:showAsAction="always"
         android:title="Go to help"/>    <!-- This uses showAsAction=always, so look at icon= parameter -->
 
 
     <item android:id="@+id/item3"
         android:orderInCategory="30"
-
         app:showAsAction="always"
         android:title="Go to help"/>    <!-- This uses showAsAction=always, so look at icon= parameter -->
-
 
 
 </menu>

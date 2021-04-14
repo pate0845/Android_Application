@@ -45,6 +45,12 @@
     <string name="selection">أختار تطبيق</string>
     <string name="homePage">أذهب الى صفحة البحث</string>
     <string name="CInstructions">التعليمات</string>
+    <string name="Caryes">نعم</string>
+    <string name="Carno">لا</string>
+    <string name="carFinish">أغلق</string>
+    <string name="selection">أختار تطبيق</string>
+    <string name="homePage">أذهب الى صفحة البحث</string>
+    <string name="CarInstructions">التعليمات</string>
     <string name="GoHome">أذهب الى الصحفة الرئيسية</string>
 
 
@@ -69,5 +75,5 @@
     <string name="sSong">أبحث عن اغاني</string>
     <string name="sTrivia">أبحث عن فوازير</string>
     <string name="title_activity_soccer__favorites_">""</string>
- master
+
 </resources>

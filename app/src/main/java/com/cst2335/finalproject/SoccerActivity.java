@@ -188,7 +188,7 @@ public class SoccerActivity extends AppCompatActivity {
             case R.id.item2:
                 androidx.appcompat.app.AlertDialog.Builder builder = new androidx.appcompat.app.AlertDialog.Builder(this);
                 builder.setTitle(getString(R.string.Instr))
-                        .setMessage(getString(R.string.Instructions))
+                        .setMessage(getString(R.string.CarInstructions))
                         .setCancelable(false)
 
                         .setPositiveButton(getString(R.string.OK), (click, arg) -> {
