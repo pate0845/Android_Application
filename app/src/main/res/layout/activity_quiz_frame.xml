@@ -13,23 +13,30 @@
         android:layout_height="wrap_content"
         />
     <RelativeLayout
-        android:layout_width="150dp"
+        android:layout_width="120dp"
         android:layout_height="match_parent"
         android:id="@+id/R1"
         android:layout_marginTop="30dp"
         >
+        <EditText
+            android:id="@id/NameTxt"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_marginTop="20dp"/>
         <TextView
             android:id="@id/unAnsTxt"
             android:text="UnAnswered : "
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
-            android:layout_marginTop="20dp"/>
+            android:layout_marginTop="20dp"
+            android:layout_below="@+id/NameTxt"/>
         <TextView
             android:id="@id/unAnsTxt1"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             android:layout_marginTop="20dp"
-            android:layout_toEndOf="@id/unAnsTxt"/>
+            android:layout_toEndOf="@id/unAnsTxt"
+            android:layout_below="@+id/NameTxt"/>
         <TextView
             android:id="@id/AnsTxt"
             android:text="Right    : "
@@ -43,13 +50,13 @@
             android:layout_toEndOf="@id/AnsTxt"
             android:layout_below="@+id/unAnsTxt1"/>
         <TextView
-            android:id="@id/wrngTxt"
+            android:id="@+id/wrngTxt"
             android:text="Wrong : "
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             android:layout_below="@+id/AnsTxt"/>
         <TextView
-            android:id="@id/wrngTxt1"
+            android:id="@+id/wrngTxt1"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             android:layout_toEndOf="@id/wrngTxt"

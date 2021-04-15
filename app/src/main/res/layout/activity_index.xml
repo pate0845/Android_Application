@@ -5,6 +5,24 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".IndexActivity">
+
+    <TextView
+        android:id="@id/txt30"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:text="Enter the Number of user :"
+        android:layout_marginTop="60dp"
+        android:layout_marginLeft="20dp"
+        android:textSize="20dp"
+        android:textColor="@color/black"/>
+    <EditText
+        android:id="@id/editTxt10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txt30"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="40dp"
+        />
     <TextView
         android:id="@id/txt3"
         android:layout_height="wrap_content"
@@ -13,6 +31,7 @@
         android:layout_marginTop="60dp"
         android:layout_marginLeft="20dp"
         android:textSize="20dp"
+        android:layout_below="@+id/editTxt10"
         android:textColor="@color/black"/>
     <EditText
         android:id="@id/editTxt1"
@@ -76,7 +95,7 @@
         android:textSize="20dp"
         android:textColor="@color/black"/>
     <RadioGroup
-        android:id="@id/gp2"
+        android:id="@+id/gp2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/txt2"
@@ -109,7 +128,7 @@
         android:layout_marginLeft="20dp"/>
     </RadioGroup>
     <Button
-        android:id="@id/submitBtn"
+        android:id="@+id/submitBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/gp2"
